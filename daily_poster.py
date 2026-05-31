@@ -50,10 +50,11 @@ def post_one(dry_run: bool = False):
     content, url = write_post_with_search()
 
     real_url = resolve_url(url)
-    full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
 
     print("\n=== GENERATED POST ===")
-    print(full_content)
+    print(content)
+    if real_url:
+        print(f"\n[comment] อ่านต่อ: {real_url}")
     print("======================")
 
     if dry_run:
@@ -65,18 +66,21 @@ def post_one(dry_run: bool = False):
     if image_url:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/photos",
-            data={"message": full_content, "url": image_url, "access_token": PAGE_ACCESS_TOKEN},
+            data={"message": content, "url": image_url, "access_token": PAGE_ACCESS_TOKEN},
         )
         post_id = res.json().get("post_id") or res.json().get("id")
     else:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/feed",
-            data={"message": full_content, "access_token": PAGE_ACCESS_TOKEN},
+            data={"message": content, "access_token": PAGE_ACCESS_TOKEN},
         )
         post_id = res.json().get("id")
 
     if res.status_code == 200:
         print(f"Posted! ID: {post_id}")
+        if post_id and real_url:
+            post_comment(post_id, f"อ่านต่อ: {real_url}")
+            print("Comment added.")
     else:
         print(f"Error {res.status_code}: {res.json()}")
 
