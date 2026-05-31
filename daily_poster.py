@@ -1,17 +1,28 @@
 """
 Usage:
-  python daily_poster.py          -- post one article now
+  python daily_poster.py          -- post now
   python daily_poster.py --dry-run -- preview without posting
 """
 import sys
 import requests
 from bs4 import BeautifulSoup
-from news_fetcher import fetch_articles, load_posted, save_posted
-from content_writer import write_post
+from content_writer import write_post_with_search
 from config import PAGE_ID, PAGE_ACCESS_TOKEN, BASE_URL
 
 
+def resolve_url(url: str) -> str:
+    if not url:
+        return url
+    try:
+        res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, allow_redirects=True)
+        return res.url
+    except Exception:
+        return url
+
+
 def get_og_image(url: str) -> str | None:
+    if not url:
+        return None
     try:
         res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
         soup = BeautifulSoup(res.text, "html.parser")
@@ -31,55 +42,38 @@ def post_comment(post_id: str, message: str):
 
 
 def post_one(dry_run: bool = False):
-    articles = fetch_articles(limit=10)
-    if not articles:
-        print("No new articles found")
-        return
-
-    article = articles[0]
-    print(f"Article: {article['title']}")
-    print(f"Source:  {article['source']}")
-
-    content = write_post(article["title"], article["summary"], article["source"])
+    print("Searching for latest tech news...")
+    content, url = write_post_with_search()
 
     print("\n=== GENERATED POST ===")
     print(content)
-    print(f"\n[comment] อ่านต่อ: {article['link']}")
+    if url:
+        print(f"\n[comment] อ่านต่อ: {url}")
     print("======================")
 
     if dry_run:
         print("\n[DRY RUN] ไม่ได้โพสต์จริง")
         return
 
-    posted = load_posted()
-
-    image_url = article.get("image_url") or get_og_image(article["link"])
+    real_url = resolve_url(url)
+    image_url = get_og_image(real_url)
 
     if image_url:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/photos",
-            data={
-                "message": content,
-                "url": image_url,
-                "access_token": PAGE_ACCESS_TOKEN,
-            },
+            data={"message": content, "url": image_url, "access_token": PAGE_ACCESS_TOKEN},
         )
     else:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/feed",
-            data={
-                "message": content,
-                "access_token": PAGE_ACCESS_TOKEN,
-            },
+            data={"message": content, "access_token": PAGE_ACCESS_TOKEN},
         )
 
     if res.status_code == 200:
         post_id = res.json().get("id") or res.json().get("post_id")
-        posted.add(article["link"])
-        save_posted(posted)
         print(f"Posted! ID: {post_id}")
-        if post_id:
-            post_comment(post_id, f"อ่านต่อ: {article['link']}")
+        if post_id and url:
+            post_comment(post_id, f"อ่านต่อ: {real_url}")
             print("Comment added.")
     else:
         print(f"Error {res.status_code}: {res.json()}")

@@ -2,9 +2,7 @@ name: Facebook Auto Post
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # 09:00 Thailand (UTC+7)
-    - cron: '0 6 * * *'   # 13:00 Thailand
-    - cron: '0 11 * * *'  # 18:00 Thailand
+    - cron: '0 */3 * * *'  # ทุก 3 ชั่วโมง (~8 โพสต์/วัน)
   workflow_dispatch:       # รันมือได้จาก GitHub UI
 
 jobs:
