@@ -23,7 +23,7 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 - ห้ามใช้ emoji มากเกิน 1 ตัว
 - ห้ามพูดถึง link ในโพสต์
 
-ท้ายสุด บรรทัดสุดท้าย ให้ใส่ SOURCE_URL: [url ของบทความ] เพื่อให้ระบบดึงไปใส่คอมเมนต์"""
+ห้ามใส่ URL หรือ SOURCE_URL ในโพสต์"""
 
 
 def write_post_with_search() -> tuple[str, str]:
@@ -34,16 +34,20 @@ def write_post_with_search() -> tuple[str, str]:
             tools=[types.Tool(google_search=types.GoogleSearch())]
         ),
     )
-    text = response.text.strip()
+    post = response.text.strip()
 
     url = ""
-    lines = text.splitlines()
-    post_lines = []
-    for line in lines:
-        if line.startswith("SOURCE_URL:"):
-            url = line.replace("SOURCE_URL:", "").strip()
-        else:
-            post_lines.append(line)
+    try:
+        chunks = response.candidates[0].grounding_metadata.grounding_chunks
+        for chunk in chunks:
+            if hasattr(chunk, "web") and chunk.web.uri:
+                uri = chunk.web.uri
+                if "vertexaisearch" not in uri and "grounding-api-redirect" not in uri:
+                    url = uri
+                    break
+        if not url and chunks:
+            url = chunks[0].web.uri if hasattr(chunks[0], "web") else ""
+    except Exception:
+        pass
 
-    post = "\n".join(post_lines).strip()
     return post, url
