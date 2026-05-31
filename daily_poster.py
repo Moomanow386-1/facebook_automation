@@ -15,7 +15,10 @@ def resolve_url(url: str) -> str:
         return url
     try:
         res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, allow_redirects=True)
-        return res.url
+        final = res.url
+        if "vertexaisearch" in final or "grounding-api-redirect" in final:
+            return ""
+        return final
     except Exception:
         return url
 
