@@ -35,10 +35,11 @@ def get_og_image(url: str) -> str | None:
 
 
 def post_comment(post_id: str, message: str):
-    requests.post(
+    res = requests.post(
         f"{BASE_URL}/{post_id}/comments",
         data={"message": message, "access_token": PAGE_ACCESS_TOKEN},
     )
+    print(f"Comment status {res.status_code}: {res.json()}")
 
 
 def post_one(dry_run: bool = False):
