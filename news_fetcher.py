@@ -6,11 +6,17 @@ from datetime import datetime, timezone
 POSTED_FILE = "posted.json"
 
 RSS_FEEDS = [
+    # English
     "https://techcrunch.com/feed/",
     "https://www.theverge.com/rss/index.xml",
     "https://feeds.arstechnica.com/arstechnica/technology-lab",
     "https://venturebeat.com/category/ai/feed/",
     "https://www.wired.com/feed/rss",
+    # Thai
+    "https://www.blognone.com/node/feed",
+    "https://www.beartai.com/feed",
+    "https://techsauce.co/feed",
+    "https://thestandard.co/category/technology/feed/",
 ]
 
 KEYWORDS = [
