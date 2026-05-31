@@ -63,14 +63,15 @@ def post_one(dry_run: bool = False):
             f"{BASE_URL}/{PAGE_ID}/photos",
             data={"message": content, "url": image_url, "access_token": PAGE_ACCESS_TOKEN},
         )
+        post_id = res.json().get("post_id") or res.json().get("id")
     else:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/feed",
             data={"message": content, "access_token": PAGE_ACCESS_TOKEN},
         )
+        post_id = res.json().get("id")
 
     if res.status_code == 200:
-        post_id = res.json().get("id") or res.json().get("post_id")
         print(f"Posted! ID: {post_id}")
         if post_id and url:
             post_comment(post_id, f"อ่านต่อ: {real_url}")
