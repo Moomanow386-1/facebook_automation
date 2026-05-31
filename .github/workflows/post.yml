@@ -1,0 +1,30 @@
+name: Facebook Auto Post
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 09:00 Thailand (UTC+7)
+    - cron: '0 6 * * *'   # 13:00 Thailand
+    - cron: '0 11 * * *'  # 18:00 Thailand
+  workflow_dispatch:       # รันมือได้จาก GitHub UI
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run poster
+        env:
+          PAGE_ID: ${{ secrets.PAGE_ID }}
+          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python daily_poster.py
