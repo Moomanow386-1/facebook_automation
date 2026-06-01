@@ -1,11 +1,26 @@
 import math
+import time
 from google import genai
 from google.genai import types
+from google.genai.errors import ServerError
 from config import GEMINI_API_KEY
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 EMBED_MODEL = "text-embedding-004"
+_RETRY_DELAYS = [30, 60]
+
+
+def _with_retry(fn):
+    for delay in _RETRY_DELAYS:
+        try:
+            return fn()
+        except ServerError as exc:
+            print(f"[retry] ServerError: {exc}, retrying in {delay}s…")
+            time.sleep(delay)
+    return fn()
+
+
 SIM_HARD_REJECT = 0.95  # nearly identical text → hard block
 SIM_LLM_CHECK   = 0.80  # ambiguous zone → let LLM decide
 
@@ -91,22 +106,25 @@ def _is_duplicate(post: str, posted_history: list[dict]) -> bool:
 
 โพสต์ใหม่นี้รายงานเหตุการณ์เดียวกันกับรายการใดรายการหนึ่งข้างบนมั้ย?
 ตอบแค่ YES หรือ NO (product เดิมแต่ version ใหม่กว่า = NO)"""
-    res = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=check_prompt,
-    )
-    answer = res.text.strip().upper()
-    return answer.startswith("YES")
+    try:
+        res = _with_retry(lambda: client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=check_prompt,
+        ))
+        answer = res.text.strip().upper()
+        return answer.startswith("YES")
+    except Exception:
+        return False
 
 
 def _generate_post(prompt: str) -> tuple[str, str]:
-    response = client.models.generate_content(
+    response = _with_retry(lambda: client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())]
         ),
-    )
+    ))
     post = response.text.strip()
     url = ""
     try:
