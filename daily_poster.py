@@ -4,10 +4,39 @@ Usage:
   python daily_poster.py --dry-run -- preview without posting
 """
 import sys
+import json
+import os
 import requests
 from bs4 import BeautifulSoup
-from content_writer import write_post_with_search
+from content_writer import write_post_with_search, _get_embedding
 from config import PAGE_ID, PAGE_ACCESS_TOKEN, BASE_URL
+
+POSTED_FILE = "posted.json"
+
+
+def load_posted_history() -> list[dict]:
+    if not os.path.exists(POSTED_FILE):
+        return []
+    with open(POSTED_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [item for item in data if isinstance(item, dict)]
+
+
+def save_posted_entry(url: str, topic: str, embedding: list[float] | None = None):
+    data = []
+    if os.path.exists(POSTED_FILE):
+        with open(POSTED_FILE, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+        for item in raw:
+            if isinstance(item, dict):
+                data.append(item)
+    entry = {"url": url, "topic": topic}
+    if embedding:
+        entry["embedding"] = embedding
+    data.append(entry)
+    data = data[-30:]
+    with open(POSTED_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 def resolve_url(url: str) -> str:
@@ -47,7 +76,8 @@ def post_comment(post_id: str, message: str):
 
 def post_one(dry_run: bool = False):
     print("Searching for latest tech news...")
-    content, url = write_post_with_search()
+    posted_history = load_posted_history()
+    content, url = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
     full_content = f"{content}\n\n\n\nอ่านต่อ: {real_url}" if real_url else content
@@ -77,6 +107,10 @@ def post_one(dry_run: bool = False):
 
     if res.status_code == 200:
         print(f"Posted! ID: {post_id}")
+        sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
+        summary = ". ".join(sentences[:4])[:400]
+        embedding = _get_embedding(content)
+        save_posted_entry(real_url, summary, embedding)
     else:
         print(f"Error {res.status_code}: {res.json()}")
 
