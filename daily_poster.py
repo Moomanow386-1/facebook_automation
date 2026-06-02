@@ -97,6 +97,12 @@ def post_one(dry_run: bool = False):
 
     if res.status_code == 200:
         print(f"Posted! ID: {post_id}")
+        if post_id:
+            detail = requests.get(
+                f"{BASE_URL}/{post_id}",
+                params={"fields": "privacy,is_published,timeline_visibility", "access_token": PAGE_ACCESS_TOKEN},
+            )
+            print(f"Post detail: {detail.json()}")
         if real_url and post_id:
             post_comment(post_id, f"อ่านต่อ: {real_url}")
         sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
