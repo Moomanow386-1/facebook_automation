@@ -22,7 +22,8 @@ def load_posted_history() -> list[dict]:
     return [item for item in data if isinstance(item, dict)]
 
 
-def save_posted_entry(url: str, topic: str, embedding: list[float] | None = None):
+def save_posted_entry(url: str, topic: str, embedding: list[float] | None = None, post_id: str | None = None):
+    from datetime import datetime, timezone
     data = []
     if os.path.exists(POSTED_FILE):
         with open(POSTED_FILE, "r", encoding="utf-8") as f:
@@ -30,7 +31,13 @@ def save_posted_entry(url: str, topic: str, embedding: list[float] | None = None
         for item in raw:
             if isinstance(item, dict):
                 data.append(item)
-    entry = {"url": url, "topic": topic}
+    entry = {
+        "url": url,
+        "topic": topic,
+        "posted_at": datetime.now(timezone.utc).isoformat(),
+    }
+    if post_id:
+        entry["post_id"] = post_id
     if embedding:
         entry["embedding"] = embedding
     data.append(entry)
@@ -129,7 +136,7 @@ def post_one(dry_run: bool = False):
         sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
         summary = ". ".join(sentences[:4])[:400]
         embedding = _get_embedding(content)
-        save_posted_entry(real_url, summary, embedding)
+        save_posted_entry(real_url, summary, embedding, post_id=post_id)
     else:
         print(f"Error {res.status_code}: {res.json()}")
 
