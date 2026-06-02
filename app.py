@@ -29,19 +29,22 @@ def fetch_posts() -> list:
     res = requests.get(
         f"{BASE_URL}/{PAGE_ID}/posts",
         params={
-            "fields": "id,message,created_time,likes.summary(true),comments.summary(true),shares",
-            "limit": 15,
+            "fields": "id,message,created_time",
+            "limit": 10,
             "access_token": PAGE_ACCESS_TOKEN,
         },
     )
-    return res.json().get("data", [])
+    data = res.json()
+    if "error" in data:
+        print(f"[fetch_posts error] {data['error']}")
+    return data.get("data", [])
 
 
 def fetch_insights(post_id: str) -> dict:
     res = requests.get(
         f"{BASE_URL}/{post_id}/insights",
         params={
-            "metric": "post_impressions_unique,post_engaged_users",
+            "metric": "post_impressions_unique,post_engaged_users,post_reactions_total",
             "access_token": PAGE_ACCESS_TOKEN,
         },
     )
@@ -49,6 +52,28 @@ def fetch_insights(post_id: str) -> dict:
     for item in res.json().get("data", []):
         out[item["name"]] = item["values"][0]["value"] if item.get("values") else 0
     return out
+
+
+@app.route("/api/token-check")
+def api_token_check():
+    from config import APP_ID, APP_SECRET
+    res = requests.get(
+        f"{BASE_URL}/debug_token",
+        params={
+            "input_token": PAGE_ACCESS_TOKEN,
+            "access_token": f"{APP_ID}|{APP_SECRET}",
+        },
+    )
+    return jsonify({"token_prefix": PAGE_ACCESS_TOKEN[:20] + "...", "debug": res.json()})
+
+
+@app.route("/api/debug")
+def api_debug():
+    res = requests.get(
+        f"{BASE_URL}/{PAGE_ID}/posts",
+        params={"fields": "id,message,created_time", "limit": 5, "access_token": PAGE_ACCESS_TOKEN},
+    )
+    return jsonify(res.json())
 
 
 @app.route("/")
@@ -63,14 +88,16 @@ def api_data():
 
     enriched = []
     for p in posts:
+        if not p.get("message"):
+            continue
         insights = fetch_insights(p["id"])
         enriched.append({
             "id": p["id"],
-            "message": p.get("message", "")[:180],
+            "message": p.get("message", ""),
             "created_time": p.get("created_time", ""),
-            "likes": p.get("likes", {}).get("summary", {}).get("total_count", 0),
-            "comments": p.get("comments", {}).get("summary", {}).get("total_count", 0),
-            "shares": p.get("shares", {}).get("count", 0),
+            "likes": insights.get("post_reactions_total", 0),
+            "comments": insights.get("post_engaged_users", 0),
+            "shares": 0,
             "reach": insights.get("post_impressions_unique", 0),
             "engaged": insights.get("post_engaged_users", 0),
         })
