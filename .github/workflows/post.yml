@@ -18,6 +18,27 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Check token permissions
+        env:
+          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+        run: |
+          python - <<'EOF'
+          import os, requests
+          token = os.environ["PAGE_ACCESS_TOKEN"]
+          app_id = os.environ["APP_ID"]
+          app_secret = os.environ["APP_SECRET"]
+          res = requests.get(
+              "https://graph.facebook.com/debug_token",
+              params={"input_token": token, "access_token": f"{app_id}|{app_secret}"}
+          )
+          data = res.json().get("data", {})
+          scopes = data.get("scopes", [])
+          print("Token scopes:", scopes)
+          print("Is valid:", data.get("is_valid"))
+          EOF
+
       - name: Run poster
         env:
           PAGE_ID: ${{ secrets.PAGE_ID }}
