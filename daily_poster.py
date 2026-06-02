@@ -73,25 +73,27 @@ def post_one(dry_run: bool = False):
     content, url = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
-    full_content = f"{content}\n\n\n\nอ่านต่อ: {real_url}" if real_url else content
 
     print("\n=== GENERATED POST ===")
-    print(full_content)
+    print(content)
+    if real_url:
+        print(f"\n[COMMENT] อ่านต่อ: {real_url}")
     print("======================")
 
     if dry_run:
         print("\n[DRY RUN] ไม่ได้โพสต์จริง")
         return
 
-    payload = {"message": full_content, "access_token": PAGE_ACCESS_TOKEN}
-    if real_url:
-        payload["link"] = real_url
-
-    res = requests.post(f"{BASE_URL}/{PAGE_ID}/feed", data=payload)
+    res = requests.post(
+        f"{BASE_URL}/{PAGE_ID}/feed",
+        data={"message": content, "access_token": PAGE_ACCESS_TOKEN},
+    )
     post_id = res.json().get("id")
 
     if res.status_code == 200:
         print(f"Posted! ID: {post_id}")
+        if real_url and post_id:
+            post_comment(post_id, f"อ่านต่อ: {real_url}")
         sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
         summary = ". ".join(sentences[:4])[:400]
         embedding = _get_embedding(content)
