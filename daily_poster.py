@@ -93,11 +93,30 @@ def post_one(dry_run: bool = False):
     image_url = get_og_image(real_url)
 
     if image_url:
-        res = requests.post(
+        # Upload photo without publishing to get photo_id
+        upload_res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/photos",
-            data={"message": full_content, "url": image_url, "access_token": PAGE_ACCESS_TOKEN},
+            data={"url": image_url, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
         )
-        post_id = res.json().get("post_id") or res.json().get("id")
+        upload_data = upload_res.json()
+        photo_id = upload_data.get("id")
+        if photo_id:
+            # Post to feed with attached photo so it appears on timeline
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={
+                    "message": full_content,
+                    "attached_media[0]": json.dumps({"media_fbid": photo_id}),
+                    "access_token": PAGE_ACCESS_TOKEN,
+                },
+            )
+        else:
+            print(f"Photo upload failed: {upload_data}, falling back to text post")
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={"message": full_content, "access_token": PAGE_ACCESS_TOKEN},
+            )
+        post_id = res.json().get("id")
     else:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/feed",
