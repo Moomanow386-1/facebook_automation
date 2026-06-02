@@ -86,7 +86,12 @@ def post_one(dry_run: bool = False):
 
     res = requests.post(
         f"{BASE_URL}/{PAGE_ID}/feed",
-        data={"message": content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+        data={
+            "message": content,
+            "published": "true",
+            "privacy": '{"value":"EVERYONE"}',
+            "access_token": PAGE_ACCESS_TOKEN,
+        },
     )
     post_id = res.json().get("id")
 
