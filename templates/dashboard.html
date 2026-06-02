@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGen Tech — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0b0c1a;
+      --card:     #13142a;
+      --border:   #2a2d52;
+      --green:    #00ff9f;
+      --cyan:     #00d4ff;
+      --pink:     #ff6b9d;
+      --yellow:   #ffd700;
+      --purple:   #a855f7;
+      --text:     #e2e8f0;
+      --muted:    #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 10% 0%, rgba(0,255,159,.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 100%, rgba(0,212,255,.06) 0%, transparent 60%);
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 32px;
+      border-bottom: 3px solid var(--green);
+      background: linear-gradient(90deg, rgba(0,255,159,.08) 0%, transparent 70%);
+    }
+    .logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      color: var(--green);
+      text-shadow: 0 0 12px var(--green);
+      letter-spacing: 1px;
+    }
+    .logo span { color: var(--cyan); }
+    .blink {
+      display: inline-block;
+      width: 10px; height: 16px;
+      background: var(--green);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .refresh-info {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    #countdown { color: var(--cyan); font-weight: 600; }
+    .btn-refresh {
+      background: transparent;
+      border: 2px solid var(--green);
+      color: var(--green);
+      padding: 6px 14px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--green);
+      transition: all .1s;
+      margin-left: 14px;
+    }
+    .btn-refresh:hover {
+      background: var(--green);
+      color: var(--bg);
+      box-shadow: none;
+      transform: translate(3px, 3px);
+    }
+
+    /* ── Layout ── */
+    main { padding: 28px 32px; max-width: 1280px; margin: 0 auto; }
+
+    /* ── Stat Cards ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+    }
+    .stat-card.green::before  { background: var(--green); }
+    .stat-card.cyan::before   { background: var(--cyan); }
+    .stat-card.pink::before   { background: var(--pink); }
+    .stat-card.yellow::before { background: var(--yellow); }
+    .stat-card.purple::before { background: var(--purple); }
+
+    .stat-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .stat-card.green  .stat-value { color: var(--green);  text-shadow: 0 0 14px var(--green); }
+    .stat-card.cyan   .stat-value { color: var(--cyan);   text-shadow: 0 0 14px var(--cyan); }
+    .stat-card.pink   .stat-value { color: var(--pink);   text-shadow: 0 0 14px var(--pink); }
+    .stat-card.yellow .stat-value { color: var(--yellow); text-shadow: 0 0 14px var(--yellow); }
+    .stat-card.purple .stat-value { color: var(--purple); text-shadow: 0 0 14px var(--purple); }
+
+    /* ── Section Title ── */
+    .section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: var(--cyan);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Post Cards ── */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 18px;
+    }
+    .post-card {
+      background: var(--card);
+      border: 2px solid var(--border);
+      padding: 18px;
+      transition: border-color .2s, transform .15s;
+      cursor: default;
+    }
+    .post-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,212,255,.12);
+    }
+    .post-date {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .post-message {
+      font-size: 12px;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .post-metrics {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .metric-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .metric-chip .icon { font-size: 13px; }
+    .metric-chip.reach  { border-color: rgba(0,212,255,.4); color: var(--cyan); }
+    .metric-chip.likes  { border-color: rgba(255,107,157,.4); color: var(--pink); }
+    .metric-chip.comments { border-color: rgba(0,255,159,.4); color: var(--green); }
+    .metric-chip.shares { border-color: rgba(255,215,0,.4); color: var(--yellow); }
+    .metric-chip.engaged { border-color: rgba(168,85,247,.4); color: var(--purple); }
+
+    /* ── Loading / Error ── */
+    .loading-state {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      color: var(--muted);
+      text-align: center;
+      padding: 60px 0;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    .pixel-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--green);
+      margin-right: 8px;
+      animation: blink .8s step-end infinite;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    NEXT<span>GEN</span> TECH<div class="blink"></div>
+  </div>
+  <div class="refresh-info">
+    <span class="pixel-dot"></span>LIVE · refresh ใน <span id="countdown">5:00</span>
+    <button class="btn-refresh" onclick="loadData()">↺ REFRESH</button>
+  </div>
+</header>
+
+<main>
+  <!-- Stats -->
+  <div class="stats-row" id="stats-row">
+    <div class="loading-state">LOADING...</div>
+  </div>
+
+  <!-- Posts -->
+  <div class="section-title">▶ RECENT POSTS</div>
+  <div class="posts-grid" id="posts-grid">
+    <div class="loading-state">LOADING...</div>
+  </div>
+</main>
+
+<script>
+  let countdownSec = 300;
+  let countdownTimer;
+
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('th-TH', {day:'2-digit',month:'short',year:'numeric'})
+      + ' ' + d.toLocaleTimeString('th-TH', {hour:'2-digit',minute:'2-digit'});
+  }
+
+  function renderStats(page, postsCount) {
+    document.getElementById('stats-row').innerHTML = `
+      <div class="stat-card green">
+        <div class="stat-label">FOLLOWERS</div>
+        <div class="stat-value">${page.followers_count ?? '—'}</div>
+      </div>
+      <div class="stat-card cyan">
+        <div class="stat-label">FAN COUNT</div>
+        <div class="stat-value">${page.fan_count ?? '—'}</div>
+      </div>
+      <div class="stat-card pink">
+        <div class="stat-label">POSTS (แสดง)</div>
+        <div class="stat-value">${postsCount}</div>
+      </div>
+    `;
+  }
+
+  function renderPosts(posts) {
+    if (!posts.length) {
+      document.getElementById('posts-grid').innerHTML =
+        '<div class="loading-state">NO POSTS FOUND</div>';
+      return;
+    }
+    document.getElementById('posts-grid').innerHTML = posts.map(p => `
+      <div class="post-card">
+        <div class="post-date">📅 ${fmtDate(p.created_time)}</div>
+        <div class="post-message">${p.message || '(ไม่มีข้อความ)'}</div>
+        <div class="post-metrics">
+          <div class="metric-chip reach"><span class="icon">👁️</span>${p.reach}</div>
+          <div class="metric-chip likes"><span class="icon">👍</span>${p.likes}</div>
+          <div class="metric-chip comments"><span class="icon">💬</span>${p.comments}</div>
+          <div class="metric-chip shares"><span class="icon">🔁</span>${p.shares}</div>
+          <div class="metric-chip engaged"><span class="icon">🖱️</span>${p.engaged}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function loadData() {
+    document.getElementById('stats-row').innerHTML =
+      '<div class="loading-state">LOADING...</div>';
+    document.getElementById('posts-grid').innerHTML =
+      '<div class="loading-state">LOADING...</div>';
+    resetCountdown();
+
+    try {
+      const res = await fetch('/api/data');
+      const data = await res.json();
+      renderStats(data.page, data.posts.length);
+      renderPosts(data.posts);
+    } catch (e) {
+      document.getElementById('posts-grid').innerHTML =
+        `<div class="loading-state">ERROR: ${e.message}</div>`;
+    }
+  }
+
+  function resetCountdown() {
+    countdownSec = 300;
+    clearInterval(countdownTimer);
+    countdownTimer = setInterval(() => {
+      countdownSec--;
+      const m = String(Math.floor(countdownSec / 60)).padStart(1, '0');
+      const s = String(countdownSec % 60).padStart(2, '0');
+      document.getElementById('countdown').textContent = `${m}:${s}`;
+      if (countdownSec <= 0) loadData();
+    }, 1000);
+  }
+
+  loadData();
+</script>
+</body>
+</html>
