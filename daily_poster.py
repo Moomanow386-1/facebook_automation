@@ -76,11 +76,10 @@ def post_one(dry_run: bool = False):
     content, url = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
+    full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
 
     print("\n=== GENERATED POST ===")
-    print(content)
-    if real_url:
-        print(f"\n[COMMENT] อ่านต่อ: {real_url}")
+    print(full_content)
     print("======================")
 
     if dry_run:
@@ -90,9 +89,8 @@ def post_one(dry_run: bool = False):
     res = requests.post(
         f"{BASE_URL}/{PAGE_ID}/feed",
         data={
-            "message": content,
+            "message": full_content,
             "published": "true",
-            "privacy": '{"value":"EVERYONE"}',
             "access_token": PAGE_ACCESS_TOKEN,
         },
     )
@@ -106,8 +104,6 @@ def post_one(dry_run: bool = False):
                 params={"fields": "privacy,is_published,timeline_visibility", "access_token": PAGE_ACCESS_TOKEN},
             )
             print(f"Post detail: {detail.json()}")
-        if real_url and post_id:
-            post_comment(post_id, f"อ่านต่อ: {real_url}")
         sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
         summary = ". ".join(sentences[:4])[:400]
         embedding = _get_embedding(content)
