@@ -7,6 +7,7 @@ import sys
 import json
 import os
 import requests
+from bs4 import BeautifulSoup
 from content_writer import write_post_with_search, _get_embedding
 from config import PAGE_ID, PAGE_ACCESS_TOKEN, BASE_URL
 
@@ -59,6 +60,20 @@ def resolve_url(url: str) -> str:
 
 
 
+def get_og_image(url: str) -> str | None:
+    if not url:
+        return None
+    try:
+        res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+        soup = BeautifulSoup(res.text, "html.parser")
+        tag = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "twitter:image"})
+        if tag:
+            return tag.get("content")
+    except Exception:
+        pass
+    return None
+
+
 def post_comment(post_id: str, message: str):
     res = requests.post(
         f"{BASE_URL}/{post_id}/comments",
@@ -87,15 +102,35 @@ def post_one(dry_run: bool = False):
         print("\n[DRY RUN] ไม่ได้โพสต์จริง")
         return
 
-    payload = {
-        "message": content,
-        "published": "true",
-        "access_token": PAGE_ACCESS_TOKEN,
-    }
-    if real_url:
-        payload["link"] = real_url
+    og_image = get_og_image(real_url) if real_url else None
 
-    res = requests.post(f"{BASE_URL}/{PAGE_ID}/feed", data=payload)
+    if og_image:
+        upload = requests.post(
+            f"{BASE_URL}/{PAGE_ID}/photos",
+            data={"url": og_image, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
+        )
+        photo_id = upload.json().get("id")
+        if photo_id:
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={
+                    "message": content,
+                    "attached_media[0]": json.dumps({"media_fbid": photo_id}),
+                    "published": "true",
+                    "access_token": PAGE_ACCESS_TOKEN,
+                },
+            )
+        else:
+            print(f"Photo upload failed: {upload.json()}, falling back to link post")
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={"message": content, "link": real_url, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+            )
+    else:
+        res = requests.post(
+            f"{BASE_URL}/{PAGE_ID}/feed",
+            data={"message": content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+        )
     post_id = res.json().get("id")
 
     if res.status_code == 200:
