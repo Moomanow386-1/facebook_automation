@@ -91,11 +91,10 @@ def post_one(dry_run: bool = False):
     content, url = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
+    full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
 
     print("\n=== GENERATED POST ===")
-    print(content)
-    if real_url:
-        print(f"link: {real_url}")
+    print(full_content)
     print("======================")
 
     if dry_run:
@@ -114,7 +113,7 @@ def post_one(dry_run: bool = False):
             res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/feed",
                 data={
-                    "message": content,
+                    "message": full_content,
                     "attached_media[0]": json.dumps({"media_fbid": photo_id}),
                     "published": "true",
                     "access_token": PAGE_ACCESS_TOKEN,
@@ -124,12 +123,12 @@ def post_one(dry_run: bool = False):
             print(f"Photo upload failed: {upload.json()}, falling back to link post")
             res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/feed",
-                data={"message": content, "link": real_url, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+                data={"message": full_content, "link": real_url, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
             )
     else:
         res = requests.post(
             f"{BASE_URL}/{PAGE_ID}/feed",
-            data={"message": content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+            data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
         )
     post_id = res.json().get("id")
 
