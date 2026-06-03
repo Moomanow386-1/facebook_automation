@@ -76,24 +76,26 @@ def post_one(dry_run: bool = False):
     content, url = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
-    full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
 
     print("\n=== GENERATED POST ===")
-    print(full_content)
+    print(content)
+    if real_url:
+        print(f"link: {real_url}")
     print("======================")
 
     if dry_run:
         print("\n[DRY RUN] ไม่ได้โพสต์จริง")
         return
 
-    res = requests.post(
-        f"{BASE_URL}/{PAGE_ID}/feed",
-        data={
-            "message": full_content,
-            "published": "true",
-            "access_token": PAGE_ACCESS_TOKEN,
-        },
-    )
+    payload = {
+        "message": content,
+        "published": "true",
+        "access_token": PAGE_ACCESS_TOKEN,
+    }
+    if real_url:
+        payload["link"] = real_url
+
+    res = requests.post(f"{BASE_URL}/{PAGE_ID}/feed", data=payload)
     post_id = res.json().get("id")
 
     if res.status_code == 200:
