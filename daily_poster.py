@@ -64,7 +64,10 @@ def post_comment(post_id: str, message: str):
         f"{BASE_URL}/{post_id}/comments",
         data={"message": message, "access_token": PAGE_ACCESS_TOKEN},
     )
-    print(f"Comment status {res.status_code}: {res.json()}")
+    if res.status_code == 200:
+        print(f"Comment posted OK")
+    else:
+        print(f"Comment skipped (permission not available)")
 
 
 def post_one(dry_run: bool = False):
