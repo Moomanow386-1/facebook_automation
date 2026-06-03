@@ -30,7 +30,7 @@ def fetch_posts() -> list:
         f"{BASE_URL}/{PAGE_ID}/posts",
         params={
             "fields": "id,message,created_time",
-            "limit": 10,
+            "limit": 15,
             "access_token": PAGE_ACCESS_TOKEN,
         },
     )
@@ -102,7 +102,7 @@ def api_data():
             "engaged": insights.get("post_engaged_users", 0),
         })
 
-    return jsonify({"page": stats, "posts": enriched})
+    return jsonify({"page": stats, "posts": enriched[:9]})
 
 
 if __name__ == "__main__":
