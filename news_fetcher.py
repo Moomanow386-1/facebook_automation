@@ -6,7 +6,18 @@ from datetime import datetime, timezone
 POSTED_FILE = "posted.json"
 
 RSS_FEEDS = [
-    # English
+    # Official AI company blogs
+    "https://www.anthropic.com/news/feed",
+    "https://openai.com/blog/rss.xml",
+    "https://huggingface.co/blog/feed.xml",
+    "https://blog.langchain.dev/rss/",
+    "https://deepmind.google/discover/blog/rss.xml",
+    # AI agents & practical AI
+    "https://www.deeplearning.ai/the-batch/feed/",
+    "https://simonwillison.net/atom/everything/",
+    "https://www.latent.space/feed",
+    "https://newsletter.pragmaticengineer.com/feed",
+    # English tech
     "https://techcrunch.com/feed/",
     "https://www.theverge.com/rss/index.xml",
     "https://feeds.arstechnica.com/arstechnica/technology-lab",
@@ -24,6 +35,8 @@ KEYWORDS = [
     "openai", "anthropic", "google ai", "meta ai", "llm", "machine learning",
     "deep learning", "robot", "automation", "space", "nasa", "spacex",
     "tesla", "chip", "semiconductor", "quantum", "tech", "software",
+    "agent", "agentic", "mcp", "model context protocol", "langchain", "autogen",
+    "tool use", "computer use", "workflow", "copilot", "cursor", "coding agent",
 ]
 
 

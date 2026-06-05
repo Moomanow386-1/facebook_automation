@@ -47,11 +47,16 @@ def _max_similarity(embedding: list[float], posted_history: list[dict]) -> float
             best = max(best, _cosine(embedding, stored))
     return best
 
-PROMPT = """ค้นหาข่าว tech, AI, หรือหุ้นเทคที่น่าสนใจที่สุดในช่วงนี้ แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์
+PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่าสนใจที่สุดในช่วงนี้ แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์
 
-หัวข้อที่สนใจ: AI, ChatGPT, Claude, Gemini, OpenAI, Anthropic, Google, Meta AI, space, NASA, SpaceX, robot, semiconductor, quantum computing, หรือเทคโนโลยีใหม่ๆ
+หัวข้อที่สนใจ (เรียงตามความสำคัญ):
+1. AI agents และ agentic workflows — เช่น Claude Opus 4.8, Hermes agent, AutoGen, LangChain, MCP (Model Context Protocol), multi-agent systems, AI ที่ทำงานแทนคน, tool use, computer use
+2. AI model ใหม่และ benchmark — เช่น Claude, Gemini, GPT, Llama, Mistral, ความสามารถใหม่, context window, reasoning
+3. AI ในการทำงานจริง — เช่น coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
+4. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
+5. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
 
-หรือข่าวหุ้น tech เช่น: NVDA (Nvidia), AMD, Intel, TSMC, Apple (AAPL), Microsoft (MSFT), Broadcom, ASML, Arm Holdings — เช่น ผลประกอบการ, guidance, ราคาหุ้น, demand chip, AI chip cycle, data center capex, analyst upgrade/downgrade
+ลดความสำคัญ: ข่าว fundraising, valuation, IPO, การระดมทุน — เลือกเฉพาะเมื่อไม่มีข่าวเทคนิคหรือ product ที่น่าสนใจกว่า
 
 สไตล์การเขียน:
 - ภาษาพูด casual เหมือนคนในวงการ tech คุยกัน
