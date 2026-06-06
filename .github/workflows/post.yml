@@ -5,6 +5,10 @@ on:
     - cron: '0 */3 * * *'  # ทุก 3 ชั่วโมง (~8 โพสต์/วัน)
   workflow_dispatch:       # รันมือได้จาก GitHub UI
 
+concurrency:
+  group: facebook-post
+  cancel-in-progress: false
+
 jobs:
   post:
     runs-on: ubuntu-latest
