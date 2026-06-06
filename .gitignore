@@ -1,5 +1,4 @@
 .env
-posted.json
 __pycache__/
 *.pyc
 post_log.txt
