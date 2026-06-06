@@ -88,7 +88,7 @@ def post_comment(post_id: str, message: str):
 def post_one(dry_run: bool = False):
     print("Searching for latest tech news...")
     posted_history = load_posted_history()
-    content, url = write_post_with_search(posted_history)
+    content, url, topic_label = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)
     full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
@@ -140,10 +140,8 @@ def post_one(dry_run: bool = False):
                 params={"fields": "privacy,is_published,timeline_visibility", "access_token": PAGE_ACCESS_TOKEN},
             )
             print(f"Post detail: {detail.json()}")
-        sentences = [s.strip() for s in content.replace("\n", " ").split(".") if s.strip()]
-        summary = ". ".join(sentences[:4])[:400]
         embedding = _get_embedding(content)
-        save_posted_entry(real_url, summary, embedding, post_id=post_id)
+        save_posted_entry(real_url, topic_label, embedding, post_id=post_id)
     else:
         print(f"Error {res.status_code}: {res.json()}")
 

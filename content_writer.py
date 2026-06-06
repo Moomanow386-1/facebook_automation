@@ -21,8 +21,8 @@ def _with_retry(fn):
     return fn()
 
 
-SIM_HARD_REJECT = 0.95  # nearly identical text → hard block
-SIM_LLM_CHECK   = 0.80  # ambiguous zone → let LLM decide
+SIM_HARD_REJECT = 0.92  # nearly identical text → hard block
+SIM_LLM_CHECK   = 0.65  # ambiguous zone → let LLM decide
 
 
 def _get_embedding(text: str) -> list[float] | None:
@@ -50,9 +50,9 @@ def _max_similarity(embedding: list[float], posted_history: list[dict]) -> float
 PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่าสนใจที่สุดในช่วงนี้ แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์
 
 หัวข้อที่สนใจ (เรียงตามความสำคัญ):
-1. AI agents และ agentic workflows — เช่น Claude Opus 4.8, Hermes agent, AutoGen, LangChain, MCP (Model Context Protocol), multi-agent systems, AI ที่ทำงานแทนคน, tool use, computer use
-2. AI model ใหม่และ benchmark — เช่น Claude, Gemini, GPT, Llama, Mistral, ความสามารถใหม่, context window, reasoning
-3. AI ในการทำงานจริง — เช่น coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
+1. AI agents และ agentic workflows — เช่น multi-agent systems, MCP (Model Context Protocol), AI ที่ทำงานแทนคน, tool use, computer use, agent orchestration, autonomous coding agents
+2. AI model ใหม่และ benchmark — Claude, Gemini, GPT, Llama, Mistral และโมเดลอื่นๆ ความสามารถใหม่, context window, reasoning, multimodal
+3. AI ในการทำงานจริง — coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
 4. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
 5. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
 
@@ -148,7 +148,22 @@ def _generate_post(prompt: str) -> tuple[str, str]:
     return post, url
 
 
-def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[str, str]:
+def _extract_topic_label(post: str) -> str:
+    try:
+        res = _with_retry(lambda: client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=(
+                f"สรุปเหตุการณ์หลักของโพสต์นี้เป็น 1 ประโยคสั้นๆ ภาษาอังกฤษ (max 15 words) "
+                f"เช่น 'Claude Opus 4.8 release - agentic workflows' หรือ 'Google I/O 2026 - Gemini becomes OS'\n\n"
+                f"โพสต์:\n{post[:800]}"
+            ),
+        ))
+        return res.text.strip()[:120]
+    except Exception:
+        return post[:80]
+
+
+def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[str, str, str]:
     history = posted_history or []
     avoid_block = _build_avoid_block(history)
     base_prompt = PROMPT + avoid_block
@@ -167,14 +182,14 @@ def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[st
                 if _is_duplicate(post, history):
                     print(f"[dedup] attempt {attempt + 1} LLM reject (similarity={sim:.3f}), retrying...")
                     continue
-            # sim < SIM_LLM_CHECK → clearly different, skip LLM verify
         elif history:
-            # no embedding available, fall back to LLM verify
             if _is_duplicate(post, history):
                 print(f"[dedup] attempt {attempt + 1} LLM reject, retrying...")
                 continue
 
-        return post, url
+        topic_label = _extract_topic_label(post)
+        return post, url, topic_label
 
     print("[dedup] all retries exhausted, using last attempt")
-    return post, url
+    topic_label = _extract_topic_label(post)
+    return post, url, topic_label
