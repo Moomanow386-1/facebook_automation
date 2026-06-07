@@ -52,12 +52,10 @@ def resolve_url(url: str) -> str:
     try:
         res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"}, allow_redirects=True)
         final = res.url
-        print(f"[debug] resolved URL: {final}")
         if "vertexaisearch.cloud.google.com" in final:
             return ""
         return final
-    except Exception as e:
-        print(f"[debug] resolve_url error: {e}")
+    except Exception:
         return url
 
 

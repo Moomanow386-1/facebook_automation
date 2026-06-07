@@ -142,12 +142,9 @@ def _generate_post(prompt: str) -> tuple[str, str]:
         for chunk in chunks:
             if hasattr(chunk, "web") and chunk.web.uri:
                 url = chunk.web.uri
-                print(f"[debug] chunk URI: {url}")
                 break
-        if not url:
-            print("[debug] no chunk URI found")
-    except Exception as e:
-        print(f"[debug] grounding error: {e}")
+    except Exception:
+        pass
     return post, url
 
 
