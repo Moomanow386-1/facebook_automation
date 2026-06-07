@@ -8,6 +8,8 @@ from config import GEMINI_API_KEY
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 EMBED_MODEL = "text-embedding-004"
+GENERATE_MODEL = "gemini-3.5-flash"
+UTIL_MODEL = "gemini-3.1-flash-lite"
 _RETRY_DELAYS = [30, 60]
 
 
@@ -115,7 +117,7 @@ def _is_duplicate(post: str, posted_history: list[dict]) -> bool:
 ตอบแค่ YES หรือ NO (product เดิมแต่ version ใหม่กว่า = NO)"""
     try:
         res = _with_retry(lambda: client.models.generate_content(
-            model="gemini-3.5-flash",
+            model=UTIL_MODEL,
             contents=check_prompt,
         ))
         answer = res.text.strip().upper()
@@ -126,7 +128,7 @@ def _is_duplicate(post: str, posted_history: list[dict]) -> bool:
 
 def _generate_post(prompt: str) -> tuple[str, str]:
     response = _with_retry(lambda: client.models.generate_content(
-        model="gemini-3.5-flash",
+        model=GENERATE_MODEL,
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())]
@@ -152,7 +154,7 @@ def _generate_post(prompt: str) -> tuple[str, str]:
 def _extract_topic_label(post: str) -> str:
     try:
         res = _with_retry(lambda: client.models.generate_content(
-            model="gemini-3.5-flash",
+            model=UTIL_MODEL,
             contents=(
                 f"สรุปเหตุการณ์หลักของโพสต์นี้เป็น 1 ประโยคสั้นๆ ภาษาอังกฤษ (max 15 words) "
                 f"เช่น 'Claude Opus 4.8 release - agentic workflows' หรือ 'Google I/O 2026 - Gemini becomes OS'\n\n"
