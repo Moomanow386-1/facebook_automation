@@ -52,7 +52,7 @@ jobs:
           APP_ID: ${{ secrets.APP_ID }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python daily_poster.py
+        run: python daily_poster.py --dry-run
 
       - name: Save dedup history
         run: |

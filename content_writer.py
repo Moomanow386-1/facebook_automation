@@ -65,7 +65,7 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 - ผสม Thai และ English อย่างเป็นธรรมชาติ
 - ประโยคสั้น กระชับ อ่านง่าย
 - เปิดด้วยเนื้อหาตรงๆ เช่น fact, ตัวเลข, หรือ statement เกี่ยวกับข่าวนั้นเลย ไม่ต้อง intro ว่า "มีข่าวมาก" หรือ "มาดูกัน"
-- จบแบบหลากหลาย บางทีเป็นความคิดเห็นสั้นๆ บางทีเป็น statement ที่ทิ้งให้คิด บางทีเป็นคำถามก็ได้ แต่ไม่ต้องถามทุกโพสต์
+- จบแบบหลากหลาย บางทีเป็นความคิดเห็นสั้นๆ บางทีเป็น statement ที่ทิ้งให้คิด — ห้ามจบด้วยคำถาม
 - ความยาวหลากหลาย บางโพสต์สั้น 2-3 ประโยค บางโพสต์ยาว 5-7 ประโยค และบางโพสต์ที่เนื้อหาน่าสนใจมากๆ สามารถเขียนยาว 30-50 ประโยคได้เลย แต่ไม่ต้องทุกโพสต์
 - ใช้ย่อหน้าแบ่งเนื้อหา ไม่ต้องเขียนต่อกันยาวๆ เป็นก้อนเดียว
 - ท้ายโพสต์ใส่ hashtag ที่เกี่ยวข้อง 4-6 อัน ทั้ง Thai และ English
@@ -76,6 +76,7 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 - ห้ามใช้คำอุทานเกินจริง เช่น "นะเนี่ย!" "เลยนะ!" "ของจริง!"
 - ห้ามใช้ ! เลย ไม่แม้แต่ครั้งเดียว
 - ห้ามใส่จุด (.) ท้ายประโยคสุดท้ายหรือท้ายโพสต์
+- ห้ามจบด้วยคำถาม เช่น "คุณคิดว่า...ไหม" "แล้วคุณล่ะ..." — จบด้วย statement เท่านั้น
 - ห้ามใช้ emoji มากเกิน 1 ตัว
 - ห้ามพูดถึง link ในโพสต์
 
@@ -140,14 +141,13 @@ def _generate_post(prompt: str) -> tuple[str, str]:
         chunks = response.candidates[0].grounding_metadata.grounding_chunks
         for chunk in chunks:
             if hasattr(chunk, "web") and chunk.web.uri:
-                uri = chunk.web.uri
-                if "vertexaisearch" not in uri and "grounding-api-redirect" not in uri:
-                    url = uri
-                    break
-        if not url and chunks:
-            url = chunks[0].web.uri if hasattr(chunks[0], "web") else ""
-    except Exception:
-        pass
+                url = chunk.web.uri
+                print(f"[debug] chunk URI: {url}")
+                break
+        if not url:
+            print("[debug] no chunk URI found")
+    except Exception as e:
+        print(f"[debug] grounding error: {e}")
     return post, url
 
 
