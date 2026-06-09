@@ -132,5 +132,11 @@
     "topic": "NVIDIA launches Vera: world's first CPU specifically designed for AI agent workloads.",
     "posted_at": "2026-06-08T22:25:24.437932+00:00",
     "post_id": "1069645096241110_122106934593347624"
+  },
+  {
+    "url": "https://venturebeat.com/orchestration/researchers-trained-an-open-source-ai-search-agent-harness-1-that-outperforms-gpt-5-4-on-recalling-relevant-information",
+    "topic": "Harness-1: 20B open-source AI search agent outperforms GPT-5.4.",
+    "posted_at": "2026-06-09T01:48:40.085536+00:00",
+    "post_id": "1069645096241110_122107051329347624"
   }
 ]
