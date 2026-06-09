@@ -10,7 +10,7 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 EMBED_MODEL = "text-embedding-004"
 GENERATE_MODEL = "gemini-3.5-flash"
 UTIL_MODEL = "gemini-3.1-flash-lite"
-_RETRY_DELAYS = [30, 60]
+_RETRY_DELAYS = [30, 60, 120, 180]
 
 
 def _with_retry(fn):
