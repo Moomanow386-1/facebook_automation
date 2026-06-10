@@ -1,11 +1,5 @@
 [
   {
-    "url": "https://www.forbes.com/sites/karlfreund/2026/06/01/cadence-and-nvidia-team-to-develop-first--fully-autonomous-eda-agent/",
-    "topic": "NVIDIA, Cadence unveil AI Super Agent for 40x faster chip verification.",
-    "posted_at": "2026-06-06T10:48:24.921194+00:00",
-    "post_id": "1069645096241110_122104700229347624"
-  },
-  {
     "url": "https://news.mit.edu/2026/teaching-ai-agents-ask-better-questions-playing-battleship-0603",
     "topic": "MIT taught AI agents efficient questioning via Battleship, outperforming larger models.",
     "posted_at": "2026-06-06T13:01:56.385280+00:00",
@@ -178,5 +172,11 @@
     "topic": "Nvidia releases Nemotron 3 Ultra: efficient hybrid architecture for scalable AI agent workflows.",
     "posted_at": "2026-06-10T07:57:51.214343+00:00",
     "post_id": "1069645096241110_122108066199347624"
+  },
+  {
+    "url": "https://www.csoonline.com/article/4183445/autonomous-ai-agents-duped-into-leaking-sensitive-data-in-phishing-test.html",
+    "topic": "Varonis study: AI agents tricked into leaking sensitive corporate data via phishing.",
+    "posted_at": "2026-06-10T12:13:28.909068+00:00",
+    "post_id": "122108284941347624"
   }
 ]
