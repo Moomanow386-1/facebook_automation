@@ -21,6 +21,9 @@ ACCENT_BAR_W   = 6
 
 FONT_BOLD    = "fonts/Prompt-Bold.ttf"
 FONT_REGULAR = "fonts/Prompt-Regular.ttf"
+LOGO_PATH    = "logo.jpg"
+LOGO_SIZE    = 78    # px, square
+LOGO_MARGIN  = 28    # px from edges
 
 HEADLINE_SIZE   = 72
 SUBTITLE_SIZE   = 38
@@ -149,6 +152,16 @@ def compose(image_url: str, headline: str, subtitle: str) -> io.BytesIO | None:
             [(text_x, accent_top), (text_x + ACCENT_BAR_W, y)],
             fill=ACCENT_COLOR,
         )
+
+        # Watermark logo — bottom right
+        try:
+            logo = Image.open(LOGO_PATH).convert("RGBA")
+            logo = logo.resize((LOGO_SIZE, LOGO_SIZE), Image.LANCZOS)
+            lx = CANVAS_W - LOGO_SIZE - LOGO_MARGIN
+            ly = CANVAS_H - LOGO_SIZE - LOGO_MARGIN
+            canvas.paste(logo, (lx, ly), logo)
+        except Exception as e:
+            print(f"[overlay] logo skipped: {e}")
 
         buf = io.BytesIO()
         canvas.convert("RGB").save(buf, format="JPEG", quality=92)
