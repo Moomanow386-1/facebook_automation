@@ -66,12 +66,16 @@ def get_og_image(url: str) -> str | None:
         return None
     try:
         res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+        print(f"[og] status={res.status_code} url={url[:80]}")
         soup = BeautifulSoup(res.text, "html.parser")
         tag = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "twitter:image"})
         if tag:
-            return tag.get("content")
-    except Exception:
-        pass
+            img = tag.get("content")
+            print(f"[og] found: {img[:80] if img else None}")
+            return img
+        print("[og] no og:image/twitter:image tag found")
+    except Exception as e:
+        print(f"[og] error: {e}")
     return None
 
 
