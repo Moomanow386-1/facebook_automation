@@ -125,31 +125,20 @@ def post_one(dry_run: bool = False):
 
     if og_image:
         if composed_buf:
-            # Upload composed image as file
-            upload = requests.post(
+            # Post directly as photo with caption — distributes to followers' News Feed
+            res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/photos",
-                data={"published": "false", "access_token": PAGE_ACCESS_TOKEN},
+                data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
                 files={"source": ("post.jpg", composed_buf, "image/jpeg")},
             )
         else:
-            # Fallback: upload OG image by URL
-            upload = requests.post(
-                f"{BASE_URL}/{PAGE_ID}/photos",
-                data={"url": og_image, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
-            )
-        photo_id = upload.json().get("id")
-        if photo_id:
+            # Fallback: post OG image by URL with caption
             res = requests.post(
-                f"{BASE_URL}/{PAGE_ID}/feed",
-                data={
-                    "message": full_content,
-                    "attached_media[0]": json.dumps({"media_fbid": photo_id}),
-                    "published": "true",
-                    "access_token": PAGE_ACCESS_TOKEN,
-                },
+                f"{BASE_URL}/{PAGE_ID}/photos",
+                data={"message": full_content, "url": og_image, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
             )
-        else:
-            print(f"Photo upload failed: {upload.json()}, falling back to text post")
+        if res.status_code != 200:
+            print(f"Photo post failed: {res.json()}, falling back to text post")
             res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/feed",
                 data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
