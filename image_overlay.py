@@ -3,6 +3,7 @@ Compose a 1080×1350 image: photo fills full canvas, dark gradient fades in from
 middle downward so text area is readable with no hard block edge.
 Returns BytesIO or None on failure.
 """
+import colorsys
 import io
 import math
 import requests
@@ -73,6 +74,25 @@ def _wrap_text(text: str, font: ImageFont.FreeTypeFont, max_width: int, draw: Im
     return lines
 
 
+def _accent_color(photo: Image.Image) -> tuple[int, int, int]:
+    """Pick the most saturated color from the bright zone of the photo, boosted for visibility."""
+    h = photo.height
+    strip = photo.crop((0, 0, photo.width, int(h * 0.65))).convert("RGB")
+    strip = strip.resize((32, 24), Image.LANCZOS)
+    pixels = list(strip.getdata())
+    best_h, best_s, best_v = None, -1.0, 1.0
+    for r, g, b in pixels:
+        hv, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        if s > best_s:
+            best_s, best_h, best_v = s, hv, v
+    if best_h is None or best_s < 0.25:
+        return (255, 107, 53)  # fallback orange
+    s = min(1.0, best_s * 1.15)
+    v = max(0.88, best_v)
+    r, g, b = colorsys.hsv_to_rgb(best_h, s, v)
+    return (int(r * 255), int(g * 255), int(b * 255))
+
+
 def _overlay_color(photo: Image.Image) -> tuple[int, int, int]:
     """Sample bottom third of photo and darken for overlay tint."""
     h = photo.height
@@ -101,8 +121,9 @@ def compose(image_url: str, headline: str, subtitle: str) -> io.BytesIO | None:
         photo = _fit_image(og, CANVAS_W, CANVAS_H).convert("RGBA")
         canvas = photo.copy()
 
-        # Sample color for overlay tint
-        tint = _overlay_color(photo)
+        # Sample colors from photo
+        tint   = _overlay_color(photo)
+        accent = _accent_color(photo)
 
         # Build smooth gradient overlay — transparent at top, opaque at bottom
         overlay = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
@@ -139,19 +160,17 @@ def compose(image_url: str, headline: str, subtitle: str) -> io.BytesIO | None:
             draw.text((text_x, y), line, font=h_font, fill=WHITE)
             y += line_h
 
-        y += 22
+        y += 20
 
-        # Accent bar + subtitle (max 3 lines)
-        s_lines = _wrap_text(subtitle, s_font, text_max_w - ACCENT_BAR_W - 16, draw)[:3]
+        # Horizontal accent line + subtitle (max 3 lines)
+        draw.rectangle([(text_x, y), (text_x + 220, y + 5)], fill=accent)
+        y += 26
+
+        s_lines = _wrap_text(subtitle, s_font, text_max_w, draw)[:3]
         s_line_h = SUBTITLE_SIZE + 10
-        accent_top = y
         for line in s_lines:
-            draw.text((text_x + ACCENT_BAR_W + 16, y), line, font=s_font, fill=SUBTITLE_COLOR)
+            draw.text((text_x, y), line, font=s_font, fill=SUBTITLE_COLOR)
             y += s_line_h
-        draw.rectangle(
-            [(text_x, accent_top), (text_x + ACCENT_BAR_W, y)],
-            fill=ACCENT_COLOR,
-        )
 
         # Watermark logo — bottom right
         try:

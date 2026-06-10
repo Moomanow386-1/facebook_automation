@@ -2,4 +2,5 @@
 __pycache__/
 *.pyc
 post_log.txt
+preview_*.jpg
 .claude/

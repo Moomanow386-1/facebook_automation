@@ -1,3 +1,5 @@
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 from config import PAGE_ID, PAGE_ACCESS_TOKEN, BASE_URL
 

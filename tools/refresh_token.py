@@ -5,13 +5,15 @@ Steps:
 2. Generate a User Access Token with: pages_manage_posts, pages_read_engagement, pages_show_list
 3. Paste it when prompted
 """
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 from dotenv import load_dotenv, set_key
 from config import APP_ID, APP_SECRET, PAGE_ID, BASE_URL
 
 load_dotenv()
 
-ENV_FILE = ".env"
+ENV_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
 
 
 def exchange_long_lived(short_token: str) -> str:

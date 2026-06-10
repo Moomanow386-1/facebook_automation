@@ -1,7 +1,9 @@
 import sys
+import os
 import io
 import requests
 from datetime import datetime, timezone
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import PAGE_ACCESS_TOKEN, BASE_URL
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
