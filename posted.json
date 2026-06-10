@@ -1,9 +1,5 @@
 [
   {
-    "url": "https://techcrunch.com/2026/05/30/softbank-says-it-will-invest-up-to-e75-billion-to-build-french-data-centers/",
-    "topic": "SoftBank ทุ่ม €75 billion สร้าง Data Center ในฝรั่งเศส"
-  },
-  {
     "url": "https://www.sciencedaily.com/releases/2026/05/260528074028.htm",
     "topic": "Stanford พัฒนา Quantum Computing ที่อุณหภูมิห้องด้วย twisted light"
   },
@@ -174,5 +170,11 @@
     "topic": "Anthropic releases Claude Fable 5 and Mythos 5 models.",
     "posted_at": "2026-06-10T01:59:31.249797+00:00",
     "post_id": "1069645096241110_122107869249347624"
+  },
+  {
+    "url": "https://thehackernews.com/2026/06/researchers-build-self-replicating-ai.html",
+    "topic": "U of Toronto researchers develop autonomous AI worm using local LLMs for self-spreading cyberattacks.",
+    "posted_at": "2026-06-10T06:56:31.047684+00:00",
+    "post_id": "1069645096241110_122108031063347624"
   }
 ]
