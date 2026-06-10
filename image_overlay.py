@@ -11,9 +11,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 CANVAS_W, CANVAS_H = 1080, 1350
 
-GRADIENT_START_Y = 700   # gradient begins here (fully transparent)
+GRADIENT_START_Y = 750   # gradient begins here (fully transparent)
 GRADIENT_END_Y   = 1050  # fully opaque by this point
-MAX_ALPHA = 231          # peak opacity of the overlay (0-255)
+MAX_ALPHA = 245          # peak opacity of the overlay (0-255)
 
 WHITE          = (255, 255, 255)
 SUBTITLE_COLOR = (220, 220, 220)
@@ -26,10 +26,17 @@ LOGO_PATH    = "logo.jpg"
 LOGO_SIZE    = 78    # px, square
 LOGO_MARGIN  = 28    # px from edges
 
-HEADLINE_SIZE   = 72
+HEADLINE_SIZE   = 64
 SUBTITLE_SIZE   = 38
 PADDING_X       = 56
 TEXT_START_Y    = 980   # where headline begins (well into the opaque zone)
+
+# Thai combining chars (non-spacing marks) — must not start or end a line unit
+_THAI_NON_STARTER = frozenset(
+    "ั"                                    # ั mai han akat
+    "ิีึืฺุู"  # ิ ี ึ ื ุ ู ฺ
+    "็่้๊๋์ํ๎"  # ็ ่ ้ ๊ ๋ ์ ํ ๎
+)
 
 
 def _load_font(path: str, size: int) -> ImageFont.FreeTypeFont:
@@ -47,8 +54,26 @@ def _fit_image(img: Image.Image, target_w: int, target_h: int) -> Image.Image:
     return img.crop((left, top, left + target_w, top + target_h))
 
 
+def _last_safe_break(s: str) -> int:
+    """Return the rightmost index in s where breaking BEFORE s[i] is Thai-safe.
+
+    Strict: neither s[i] nor s[i-1] is a combining char (preserves syllable boundaries).
+    Falls back to relaxed: at least s[i] is not combining (avoids orphan diacritics).
+    Returns 0 when no safe break exists (force-break caller's responsibility).
+    """
+    # Strict pass: preserve full syllable cluster
+    for i in range(len(s) - 1, 0, -1):
+        if s[i] not in _THAI_NON_STARTER and s[i - 1] not in _THAI_NON_STARTER:
+            return i
+    # Relaxed pass: at minimum avoid starting new line with combining char
+    for i in range(len(s) - 1, 0, -1):
+        if s[i] not in _THAI_NON_STARTER:
+            return i
+    return 0
+
+
 def _wrap_text(text: str, font: ImageFont.FreeTypeFont, max_width: int, draw: ImageDraw.ImageDraw) -> list[str]:
-    """Word-split first, then char-level fallback for long Thai tokens."""
+    """Word-split first; char-level fallback for long tokens with Thai syllable-safe breaking."""
     words = text.split()
     lines, current = [], ""
     for word in words:
@@ -56,6 +81,7 @@ def _wrap_text(text: str, font: ImageFont.FreeTypeFont, max_width: int, draw: Im
         if draw.textlength(test, font=font) <= max_width:
             current = test
         elif draw.textlength(word, font=font) > max_width:
+            # Token wider than one line — char-level split with Thai safety
             if current:
                 lines.append(current)
                 current = ""
@@ -64,14 +90,39 @@ def _wrap_text(text: str, font: ImageFont.FreeTypeFont, max_width: int, draw: Im
                 if draw.textlength(probe, font=font) <= max_width:
                     current = probe
                 else:
-                    lines.append(current)
-                    current = ch
+                    bp = _last_safe_break(current)
+                    if bp > 0:
+                        lines.append(current[:bp])
+                        carry = current[bp:]
+                        # Try carry + ch; if still too wide, emit carry separately
+                        if draw.textlength(carry + ch, font=font) <= max_width:
+                            current = carry + ch
+                        else:
+                            if carry:
+                                lines.append(carry)
+                            current = ch
+                    elif current:
+                        lines.append(current)
+                        current = ch
+                    else:
+                        lines.append(ch)
+                        current = ""
         else:
             lines.append(current)
             current = word
     if current:
         lines.append(current)
     return lines
+
+
+def _fit_headline(text: str, max_width: int, max_lines: int, draw: ImageDraw.ImageDraw) -> tuple[list[str], ImageFont.FreeTypeFont]:
+    """Try decreasing font sizes until headline fits within max_lines. Returns (lines, font)."""
+    for size in [64, 56, 50, 44]:
+        font = _load_font(FONT_BOLD, size)
+        lines = _wrap_text(text, font, max_width, draw)
+        if len(lines) <= max_lines:
+            return lines, font
+    return lines, font  # best effort with smallest size
 
 
 def _accent_color(photo: Image.Image) -> tuple[int, int, int]:
@@ -126,13 +177,15 @@ def compose(image_url: str, headline: str, subtitle: str) -> io.BytesIO | None:
         accent = _accent_color(photo)
 
         # Build smooth gradient overlay — transparent at top, opaque at bottom
+        # Uses t**2.0 easing so the gradient stays nearly invisible near the start
+        # and ramps up naturally, avoiding a "solid block" appearance.
         overlay = Image.new("RGBA", (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
         ov_draw = ImageDraw.Draw(overlay)
 
         fade_steps = GRADIENT_END_Y - GRADIENT_START_Y
         for i in range(fade_steps):
             t = i / fade_steps
-            alpha = int(MAX_ALPHA * (t ** 0.55))  # smooth ease-in
+            alpha = int(MAX_ALPHA * (t ** 2.0))
             y = GRADIENT_START_Y + i
             ov_draw.rectangle([(0, y), (CANVAS_W, y + 1)], fill=(*tint, alpha))
 
@@ -145,29 +198,32 @@ def compose(image_url: str, headline: str, subtitle: str) -> io.BytesIO | None:
         canvas = Image.alpha_composite(canvas, overlay)
         draw = ImageDraw.Draw(canvas)
 
-        # Load fonts
-        h_font = _load_font(FONT_BOLD, HEADLINE_SIZE)
-        s_font = _load_font(FONT_REGULAR, SUBTITLE_SIZE)
-
-        text_x   = PADDING_X
+        text_x     = PADDING_X
         text_max_w = CANVAS_W - PADDING_X * 2
-        y = TEXT_START_Y
+        y          = TEXT_START_Y
 
-        # Headline (max 4 lines)
-        h_lines = _wrap_text(headline, h_font, text_max_w, draw)[:4]
-        line_h = HEADLINE_SIZE + 12
+        # Headline: auto-shrink until fits in 4 lines
+        h_lines, h_font = _fit_headline(headline, text_max_w, 4, draw)
+        h_size   = h_font.size
+        line_h   = h_size + 12
         for line in h_lines:
             draw.text((text_x, y), line, font=h_font, fill=WHITE)
             y += line_h
 
         y += 20
 
-        # Horizontal accent line + subtitle (max 3 lines)
+        # Horizontal accent line
         draw.rectangle([(text_x, y), (text_x + 220, y + 5)], fill=accent)
         y += 26
 
-        s_lines = _wrap_text(subtitle, s_font, text_max_w, draw)[:3]
-        s_line_h = SUBTITLE_SIZE + 10
+        # Subtitle: fit as many lines as space allows (safety margin on width)
+        s_font     = _load_font(FONT_REGULAR, SUBTITLE_SIZE)
+        s_line_h   = SUBTITLE_SIZE + 10
+        sub_max_w  = int(text_max_w * 0.94)  # slight margin so long lines don't clip
+        space_left = CANVAS_H - y - 20       # 20px bottom padding
+        max_s_lines = max(1, space_left // s_line_h)
+
+        s_lines = _wrap_text(subtitle, s_font, sub_max_w, draw)[:max_s_lines]
         for line in s_lines:
             draw.text((text_x, y), line, font=s_font, fill=SUBTITLE_COLOR)
             y += s_line_h

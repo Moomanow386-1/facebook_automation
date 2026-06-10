@@ -17,26 +17,43 @@ LOGO_PATH    = os.path.join(BASE_DIR, "logo.jpg")
 LOGO_SIZE    = 78
 LOGO_MARGIN  = 28
 
-GRADIENT_START_Y = 700
+GRADIENT_START_Y = 750
 GRADIENT_END_Y   = 1050
-MAX_ALPHA        = 231
+MAX_ALPHA        = 245
 
 WHITE          = (255, 255, 255)
 SUBTITLE_COLOR = (220, 220, 220)
 ACCENT_COLOR   = (255, 107, 53)
 ACCENT_BAR_W   = 6
-HEADLINE_SIZE  = 72
+HEADLINE_SIZE  = 64
 SUBTITLE_SIZE  = 38
 PADDING_X      = 56
 TEXT_START_Y   = 980
 
-TEST_HEADLINE = "AI Agents ปฏิวัติการทำงาน ในปี 2025"
-TEST_SUBTITLE = "บริษัทใหญ่แห่กัน deploy agent หลายพันตัว ทั่วโลก"
+TEST_HEADLINE = "AI Agent ก็โดนหลอก! ความเสี่ยงใหม่ที่องค์กรต้องระวัง"
+TEST_SUBTITLE = "แค่เจออีเมล Phishing เนียนๆ ก็คายข้อมูลลับบริษัทออกมาหมดแล้ว"
 TEST_TOPIC    = "AI AGENTS"
+
+
+_THAI_NON_STARTER = frozenset(
+    "ั"
+    "ิีึืฺุู"
+    "็่้๊๋์ํ๎"
+)
 
 
 def _load_font(path, size):
     return ImageFont.truetype(path, size)
+
+
+def _last_safe_break(s):
+    for i in range(len(s) - 1, 0, -1):
+        if s[i] not in _THAI_NON_STARTER and s[i - 1] not in _THAI_NON_STARTER:
+            return i
+    for i in range(len(s) - 1, 0, -1):
+        if s[i] not in _THAI_NON_STARTER:
+            return i
+    return 0
 
 
 def _wrap_text(text, font, max_width, draw):
@@ -55,14 +72,37 @@ def _wrap_text(text, font, max_width, draw):
                 if draw.textlength(probe, font=font) <= max_width:
                     current = probe
                 else:
-                    lines.append(current)
-                    current = ch
+                    bp = _last_safe_break(current)
+                    if bp > 0:
+                        lines.append(current[:bp])
+                        carry = current[bp:]
+                        if draw.textlength(carry + ch, font=font) <= max_width:
+                            current = carry + ch
+                        else:
+                            if carry:
+                                lines.append(carry)
+                            current = ch
+                    elif current:
+                        lines.append(current)
+                        current = ch
+                    else:
+                        lines.append(ch)
+                        current = ""
         else:
             lines.append(current)
             current = word
     if current:
         lines.append(current)
     return lines
+
+
+def _fit_headline(text, max_width, max_lines, draw):
+    for size in [64, 56, 50, 44]:
+        font = _load_font(FONT_BOLD, size)
+        lines = _wrap_text(text, font, max_width, draw)
+        if len(lines) <= max_lines:
+            return lines, font
+    return lines, font
 
 
 def _overlay_color(photo):
@@ -82,7 +122,7 @@ def _build_gradient(tint, start_y=GRADIENT_START_Y, end_y=GRADIENT_END_Y, max_al
     fade_steps = end_y - start_y
     for i in range(fade_steps):
         t = i / fade_steps
-        alpha = int(max_alpha * (t ** 0.55))
+        alpha = int(max_alpha * (t ** 2.0))
         ov_draw.rectangle([(0, start_y + i), (CANVAS_W, start_y + i + 1)], fill=(*tint, alpha))
     ov_draw.rectangle([(0, end_y), (CANVAS_W, CANVAS_H)], fill=(*tint, max_alpha))
     return overlay
@@ -131,19 +171,23 @@ def style_0_original(photo, headline, subtitle, topic):
     tint = _overlay_color(photo)
     canvas = Image.alpha_composite(canvas, _build_gradient(tint))
     draw = ImageDraw.Draw(canvas)
-    h_font = _load_font(FONT_BOLD, HEADLINE_SIZE)
     s_font = _load_font(FONT_REGULAR, SUBTITLE_SIZE)
-    text_x = PADDING_X
+    text_x     = PADDING_X
     text_max_w = CANVAS_W - PADDING_X * 2
-    y = TEXT_START_Y
-    h_lines = _wrap_text(headline, h_font, text_max_w, draw)[:4]
+    y          = TEXT_START_Y
+
+    h_lines, h_font = _fit_headline(headline, text_max_w, 4, draw)
     for line in h_lines:
         draw.text((text_x, y), line, font=h_font, fill=WHITE)
-        y += HEADLINE_SIZE + 12
+        y += h_font.size + 12
     y += 20
     draw.rectangle([(text_x, y), (text_x + 220, y + 5)], fill=ACCENT_COLOR)
     y += 26
-    s_lines = _wrap_text(subtitle, s_font, text_max_w, draw)[:3]
+
+    sub_max_w  = int(text_max_w * 0.94)
+    space_left = CANVAS_H - y - 20
+    max_s_lines = max(1, space_left // (SUBTITLE_SIZE + 10))
+    s_lines = _wrap_text(subtitle, s_font, sub_max_w, draw)[:max_s_lines]
     for line in s_lines:
         draw.text((text_x, y), line, font=s_font, fill=SUBTITLE_COLOR)
         y += SUBTITLE_SIZE + 10
