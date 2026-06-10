@@ -1,11 +1,5 @@
 [
   {
-    "url": "https://www.cnet.com/news-live/microsoft-build-2026-news-ai-copilot/",
-    "topic": "Microsoft Build 2026: Agentic AI powers agent-first devices, Windows, and development.",
-    "posted_at": "2026-06-06T06:18:48.675062+00:00",
-    "post_id": "1069645096241110_122104528665347624"
-  },
-  {
     "url": "https://www.forbes.com/sites/karlfreund/2026/06/01/cadence-and-nvidia-team-to-develop-first--fully-autonomous-eda-agent/",
     "topic": "NVIDIA, Cadence unveil AI Super Agent for 40x faster chip verification.",
     "posted_at": "2026-06-06T10:48:24.921194+00:00",
@@ -178,5 +172,11 @@
     "topic": "EU orders Meta to provide free WhatsApp API access to AI competitors amid antitrust probe.",
     "posted_at": "2026-06-10T07:52:20.804838+00:00",
     "post_id": "1069645096241110_122108063205347624"
+  },
+  {
+    "url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/",
+    "topic": "Nvidia releases Nemotron 3 Ultra: efficient hybrid architecture for scalable AI agent workflows.",
+    "posted_at": "2026-06-10T07:57:51.214343+00:00",
+    "post_id": "1069645096241110_122108066199347624"
   }
 ]
