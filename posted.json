@@ -1,11 +1,5 @@
 [
   {
-    "url": "https://blog.mean.ceo/ai-agents-news-june-2026/",
-    "topic": "AI agents are evolving into a critical business software layer.",
-    "posted_at": "2026-06-06T04:03:40.028744+00:00",
-    "post_id": "1069645096241110_122104461225347624"
-  },
-  {
     "url": "https://www.cnet.com/news-live/microsoft-build-2026-news-ai-copilot/",
     "topic": "Microsoft Build 2026: Agentic AI powers agent-first devices, Windows, and development.",
     "posted_at": "2026-06-06T06:18:48.675062+00:00",
@@ -178,5 +172,11 @@
     "topic": "**NIST proves mathematically that 100% secure AI guardrails are impossible.**",
     "posted_at": "2026-06-10T07:37:09.537479+00:00",
     "post_id": "1069645096241110_122108056233347624"
+  },
+  {
+    "url": "https://www.investing.com/news/stock-market-news/eu-regulators-order-meta-to-allow-rival-ai-chatbots-free-access-to-whatsapp-4733539",
+    "topic": "EU orders Meta to provide free WhatsApp API access to AI competitors amid antitrust probe.",
+    "posted_at": "2026-06-10T07:52:20.804838+00:00",
+    "post_id": "1069645096241110_122108063205347624"
   }
 ]
