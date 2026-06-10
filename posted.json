@@ -1,9 +1,5 @@
 [
   {
-    "url": "https://www.sciencedaily.com/releases/2026/05/260528074028.htm",
-    "topic": "Stanford พัฒนา Quantum Computing ที่อุณหภูมิห้องด้วย twisted light"
-  },
-  {
     "url": "https://blog.mean.ceo/ai-agents-news-june-2026/",
     "topic": "AI agents are evolving into a critical business software layer.",
     "posted_at": "2026-06-06T04:03:40.028744+00:00",
@@ -176,5 +172,11 @@
     "topic": "U of Toronto researchers develop autonomous AI worm using local LLMs for self-spreading cyberattacks.",
     "posted_at": "2026-06-10T06:56:31.047684+00:00",
     "post_id": "1069645096241110_122108031063347624"
+  },
+  {
+    "url": "",
+    "topic": "**NIST proves mathematically that 100% secure AI guardrails are impossible.**",
+    "posted_at": "2026-06-10T07:37:09.537479+00:00",
+    "post_id": "1069645096241110_122108056233347624"
   }
 ]
