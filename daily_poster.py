@@ -8,7 +8,8 @@ import json
 import os
 import requests
 from bs4 import BeautifulSoup
-from content_writer import write_post_with_search, _get_embedding
+from content_writer import write_post_with_search, _get_embedding, generate_overlay_text
+from image_overlay import compose as compose_overlay
 from config import PAGE_ID, PAGE_ACCESS_TOKEN, BASE_URL
 
 POSTED_FILE = "posted.json"
@@ -97,17 +98,41 @@ def post_one(dry_run: bool = False):
     print(full_content)
     print("======================")
 
-    if dry_run:
-        print("\n[DRY RUN] ไม่ได้โพสต์จริง")
-        return
-
     og_image = get_og_image(real_url) if real_url else None
 
+    # Build overlay image if OG image exists
+    composed_buf = None
     if og_image:
-        upload = requests.post(
-            f"{BASE_URL}/{PAGE_ID}/photos",
-            data={"url": og_image, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
-        )
+        headline, subtitle = generate_overlay_text(content)
+        print(f"[overlay] headline: {headline}")
+        print(f"[overlay] subtitle: {subtitle}")
+        composed_buf = compose_overlay(og_image, headline, subtitle)
+        if not composed_buf:
+            print("[overlay] compose failed, will fall back to OG URL")
+
+    if dry_run:
+        if composed_buf:
+            with open("_dry_run_preview.jpg", "wb") as f:
+                f.write(composed_buf.read())
+            print("\n[DRY RUN] overlay saved → _dry_run_preview.jpg")
+        else:
+            print("\n[DRY RUN] no image overlay")
+        return
+
+    if og_image:
+        if composed_buf:
+            # Upload composed image as file
+            upload = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/photos",
+                data={"published": "false", "access_token": PAGE_ACCESS_TOKEN},
+                files={"source": ("post.jpg", composed_buf, "image/jpeg")},
+            )
+        else:
+            # Fallback: upload OG image by URL
+            upload = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/photos",
+                data={"url": og_image, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
+            )
         photo_id = upload.json().get("id")
         if photo_id:
             res = requests.post(
@@ -120,10 +145,10 @@ def post_one(dry_run: bool = False):
                 },
             )
         else:
-            print(f"Photo upload failed: {upload.json()}, falling back to link post")
+            print(f"Photo upload failed: {upload.json()}, falling back to text post")
             res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/feed",
-                data={"message": full_content, "link": real_url, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+                data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
             )
     else:
         res = requests.post(

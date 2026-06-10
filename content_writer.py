@@ -163,6 +163,27 @@ def _extract_topic_label(post: str) -> str:
         return post[:80]
 
 
+def generate_overlay_text(post: str) -> tuple[str, str]:
+    """Return (headline, subtitle) Thai strings for the image overlay."""
+    try:
+        res = _with_retry(lambda: client.models.generate_content(
+            model=UTIL_MODEL,
+            contents=(
+                "จากโพสต์นี้ ให้สร้างข้อความ 2 บรรทัดสำหรับใส่บนรูปภาพ:\n"
+                "บรรทัด 1 (HEADLINE): ประโยคสั้นๆ ภาษาไทยผสม English ได้ ไม่เกิน 40 ตัวอักษร กระชับ น่าสนใจ\n"
+                "บรรทัด 2 (SUBTITLE): อธิบายเพิ่มเติม 1 ประโยค ไม่เกิน 60 ตัวอักษร\n\n"
+                "ตอบแค่ 2 บรรทัด ไม่ต้องมี label หรือ prefix\n\n"
+                f"โพสต์:\n{post[:800]}"
+            ),
+        ))
+        lines = [l.strip() for l in res.text.strip().splitlines() if l.strip()]
+        headline = lines[0][:80] if lines else post[:40]
+        subtitle = lines[1][:100] if len(lines) > 1 else ""
+        return headline, subtitle
+    except Exception:
+        return post[:40], ""
+
+
 def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[str, str, str]:
     history = posted_history or []
     avoid_block = _build_avoid_block(history)

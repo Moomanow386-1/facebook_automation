@@ -4,3 +4,4 @@ schedule
 feedparser
 google-genai
 beautifulsoup4
+Pillow
