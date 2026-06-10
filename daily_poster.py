@@ -124,24 +124,46 @@ def post_one(dry_run: bool = False):
         return
 
     if og_image:
+        photo_id = None
         if composed_buf:
-            # Post directly as photo with caption — distributes to followers' News Feed
-            res = requests.post(
+            # Step 1: upload photo silently (published=false keeps it off Photos tab)
+            upload = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/photos",
-                data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+                data={"published": "false", "access_token": PAGE_ACCESS_TOKEN},
                 files={"source": ("post.jpg", composed_buf, "image/jpeg")},
             )
-        else:
-            # Fallback: post OG image by URL with caption
-            res = requests.post(
+            if upload.status_code == 200:
+                photo_id = upload.json().get("id")
+        elif og_image:
+            # Upload OG image by URL silently
+            upload = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/photos",
-                data={"message": full_content, "url": og_image, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+                data={"url": og_image, "published": "false", "access_token": PAGE_ACCESS_TOKEN},
+            )
+            if upload.status_code == 200:
+                photo_id = upload.json().get("id")
+
+        if photo_id:
+            # Step 2: create a feed post with the photo attached — appears in News Feed
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={
+                    "message": full_content,
+                    "attached_media": json.dumps([{"media_fbid": photo_id}]),
+                    "access_token": PAGE_ACCESS_TOKEN,
+                },
+            )
+        else:
+            print("[post] photo upload failed, falling back to text post")
+            res = requests.post(
+                f"{BASE_URL}/{PAGE_ID}/feed",
+                data={"message": full_content, "access_token": PAGE_ACCESS_TOKEN},
             )
         if res.status_code != 200:
             print(f"Photo post failed: {res.json()}, falling back to text post")
             res = requests.post(
                 f"{BASE_URL}/{PAGE_ID}/feed",
-                data={"message": full_content, "published": "true", "access_token": PAGE_ACCESS_TOKEN},
+                data={"message": full_content, "access_token": PAGE_ACCESS_TOKEN},
             )
     else:
         res = requests.post(

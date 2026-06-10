@@ -30,12 +30,13 @@ Orchestrates the full flow:
 3. Resolves redirect URLs; filters out `vertexaisearch.cloud.google.com` grounding redirects
 4. Scrapes OG image from the source page (`og:image` / `twitter:image`) with debug logging
 5. If OG image found: calls `content_writer.generate_overlay_text()` → composites image via `image_overlay.compose()`
-6. Posts to Facebook Graph API v22.0:
-   - With composed image: POST to `/{PAGE_ID}/photos` with `message` + `source` file + `published: true`
+6. Posts to Facebook Graph API v22.0 via **2-step** (image posts):
+   - Step 1: `POST /{PAGE_ID}/photos` with `published=false` + `source` file → get `photo_id`
+   - Step 2: `POST /{PAGE_ID}/feed` with `message` + `attached_media=[{"media_fbid": photo_id}]` → appears in News Feed
    - Without image: plain POST to `/{PAGE_ID}/feed`
 7. Saves entry to `posted.json` (url, topic, embedding, post_id)
 
-**Important**: Post directly to `/photos` (NOT `/feed` + `attached_media`) — the `attached_media` approach caused posts to appear only in Photos tab, not in followers' News Feed.
+**Important**: Use 2-step upload+feed approach. Posting directly to `/photos` with `published=true` causes posts to appear only in Photos tab, not in followers' News Feed.
 
 ### Image Overlay (`image_overlay.py`)
 
