@@ -1,11 +1,5 @@
 [
   {
-    "url": "https://news.mit.edu/2026/teaching-ai-agents-ask-better-questions-playing-battleship-0603",
-    "topic": "MIT taught AI agents efficient questioning via Battleship, outperforming larger models.",
-    "posted_at": "2026-06-06T13:01:56.385280+00:00",
-    "post_id": "1069645096241110_122104773633347624"
-  },
-  {
     "url": "https://www.swfte.com/ai/leaderboard",
     "topic": "Top AI models advance with huge context, agentic skills, and OS integration.",
     "posted_at": "2026-06-06T19:02:17.790236+00:00",
@@ -178,5 +172,11 @@
     "topic": "Varonis study: AI agents tricked into leaking sensitive corporate data via phishing.",
     "posted_at": "2026-06-10T12:13:28.909068+00:00",
     "post_id": "122108284941347624"
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/",
+    "topic": "Google releases Gemma 4 12B: encoder-free, native multimodal model for offline laptops.",
+    "posted_at": "2026-06-10T17:48:37.491902+00:00",
+    "post_id": "1069645096241110_122108496291347624"
   }
 ]
