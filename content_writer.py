@@ -50,7 +50,7 @@ def _max_similarity(embedding: list[float], posted_history: list[dict]) -> float
             best = max(best, _cosine(embedding, stored))
     return best
 
-PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่าสนใจที่สุดในช่วงนี้ แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์
+PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่าสนใจที่สุดที่เกิดขึ้นใน 7 วันล่าสุด แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์ ให้เลือกข่าวที่มี URL แหล่งที่มาชัดเจนอ้างอิงได้
 
 หัวข้อที่สนใจ (เรียงตามความสำคัญ):
 1. AI agents และ agentic workflows — เช่น multi-agent systems, MCP (Model Context Protocol), AI ที่ทำงานแทนคน, tool use, computer use, agent orchestration, autonomous coding agents
@@ -222,6 +222,12 @@ def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[st
             if _is_duplicate(post, history):
                 print(f"[dedup] attempt {attempt + 1} LLM reject, retrying...")
                 continue
+
+        if not url:
+            print("[url] grounding returned no URL, retrying once for source...")
+            post2, url2 = _generate_post(base_prompt + extra + "\n\n(จำเป็นต้องมี URL แหล่งที่มา เลือกข่าวที่อ้างอิง source ได้ชัดเจน)")
+            if url2:
+                post, url = post2, url2
 
         topic_label = _extract_topic_label(post)
         return post, url, topic_label
