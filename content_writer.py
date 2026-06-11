@@ -9,8 +9,9 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 
 EMBED_MODEL = "text-embedding-004"
 GENERATE_MODEL = "gemini-3.5-flash"
+GENERATE_MODEL_FALLBACKS = ["gemini-3.1-flash", "gemini-3.1-flash-lite"]
 UTIL_MODEL = "gemini-3.1-flash-lite"
-_RETRY_DELAYS = [30, 60, 120, 180, 300]
+_RETRY_DELAYS = [30, 60, 120, 180, 300, 300, 300, 300]
 
 
 def _with_retry(fn):
@@ -128,13 +129,24 @@ def _is_duplicate(post: str, posted_history: list[dict]) -> bool:
 
 
 def _generate_post(prompt: str) -> tuple[str, str]:
-    response = _with_retry(lambda: client.models.generate_content(
-        model=GENERATE_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            tools=[types.Tool(google_search=types.GoogleSearch())]
-        ),
-    ))
+    last_exc = None
+    for model in [GENERATE_MODEL] + GENERATE_MODEL_FALLBACKS:
+        try:
+            response = _with_retry(lambda m=model: client.models.generate_content(
+                model=m,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                ),
+            ))
+            if model != GENERATE_MODEL:
+                print(f"[fallback] used {model} after {GENERATE_MODEL} unavailable")
+            break
+        except ServerError as exc:
+            print(f"[fallback] {model} exhausted retries: {exc}")
+            last_exc = exc
+    else:
+        raise last_exc
     post = response.text.strip()
     url = ""
     try:
