@@ -7,7 +7,7 @@ import colorsys
 import io
 import math
 import requests
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 CANVAS_W, CANVAS_H = 1080, 1350
 
@@ -44,8 +44,37 @@ def _load_font(path: str, size: int) -> ImageFont.FreeTypeFont:
 
 
 def _fit_image(img: Image.Image, target_w: int, target_h: int) -> Image.Image:
-    """Scale + center-crop to fill target dimensions exactly."""
+    """Scale + center-crop to fill target dimensions.
+
+    For landscape sources (src ratio > target ratio by >15%), uses a blurred
+    background so the sharp image fits full-width without heavy side-cropping.
+    """
     iw, ih = img.size
+    src_ratio = iw / ih
+    tgt_ratio = target_w / target_h
+
+    if src_ratio > tgt_ratio * 1.15:
+        # Landscape→portrait: fit width, blur-fill vertical space
+        scale_fg = target_w / iw
+        fg_w = target_w
+        fg_h = math.ceil(ih * scale_fg)
+
+        # Blurred background: scale to fill height, crop width, then blur+darken
+        scale_bg = target_h / ih
+        bg_w = math.ceil(iw * scale_bg)
+        bg = img.resize((bg_w, target_h), Image.LANCZOS)
+        bg_left = (bg_w - target_w) // 2
+        bg = bg.crop((bg_left, 0, bg_left + target_w, target_h))
+        bg = bg.filter(ImageFilter.GaussianBlur(radius=28))
+        bg = ImageEnhance.Brightness(bg).enhance(0.35)
+
+        fg = img.resize((fg_w, fg_h), Image.LANCZOS)
+        top_offset = (target_h - fg_h) // 2
+        result = bg.convert("RGBA")
+        result.paste(fg.convert("RGBA"), (0, top_offset))
+        return result
+
+    # Portrait/square: fill and center-crop (original behavior)
     scale = max(target_w / iw, target_h / ih)
     new_w, new_h = math.ceil(iw * scale), math.ceil(ih * scale)
     img = img.resize((new_w, new_h), Image.LANCZOS)
