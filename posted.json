@@ -1,11 +1,5 @@
 [
   {
-    "url": "https://ai.google.dev/gemini-api/docs/changelog",
-    "topic": "Google Gemini introduces new autonomous agents for development and enterprise research.",
-    "posted_at": "2026-06-06T21:53:23.699504+00:00",
-    "post_id": "1069645096241110_122105077749347624"
-  },
-  {
     "url": "",
     "topic": "AI agent discovers 21 zero-day bugs in FFmpeg for only $1,000.",
     "posted_at": "2026-06-07T05:02:37.898738+00:00",
@@ -178,5 +172,11 @@
     "topic": "Microsoft and NVIDIA partner to secure AI agents via OS-level kernel sandboxing.",
     "posted_at": "2026-06-10T22:46:43.117940+00:00",
     "post_id": "1069645096241110_122108663409347624"
+  },
+  {
+    "url": "",
+    "topic": "Asana and Palo Alto Networks acquire AI startups to accelerate enterprise Agentic Workflows.",
+    "posted_at": "2026-06-11T04:33:00.526098+00:00",
+    "post_id": "1069645096241110_122108860767347624"
   }
 ]
