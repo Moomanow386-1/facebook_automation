@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://kilo.ai/open-source-models",
-    "topic": "MiniMax releases M3: a high-performance open-weight model with 1M context window.",
-    "posted_at": "2026-06-07T06:55:42.260749+00:00",
-    "post_id": "1069645096241110_122105311479347624",
-    "metrics_refreshed_at": "2026-06-11T17:59:28.203070+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "",
     "topic": "Microsoft launches MAI-Thinking-1, its first proprietary reasoning model to reduce dependency on partners.",
     "posted_at": "2026-06-07T10:59:46.408158+00:00",
@@ -243,18 +234,27 @@
     "post_id": "1069645096241110_122108947227347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-11T13:39:03.852758+00:00"
+    "metrics_refreshed_at": "2026-06-11T20:19:17.347182+00:00"
   },
   {
     "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
     "topic": "Google DeepMind launches DiffusionGemma: a fast, non-autoregressive text diffusion model.",
     "posted_at": "2026-06-11T13:58:22.794227+00:00",
-    "post_id": "1069645096241110_122109259767347624"
+    "post_id": "1069645096241110_122109259767347624",
+    "views": 2,
+    "clicks": 0,
+    "metrics_refreshed_at": "2026-06-11T20:19:17.347182+00:00"
   },
   {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
     "topic": "Anthropic: Claude writes over 80% of production code, enabling recursive self-improvement.",
     "posted_at": "2026-06-11T18:02:32.151276+00:00",
     "post_id": "1069645096241110_122109439629347624"
+  },
+  {
+    "url": "https://www.pymnts.com/acquisitions/2026/openai-plans-ona-purchase-transform-coding-agents/",
+    "topic": "OpenAI acquires Ona to enable persistent, long-running autonomous AI coding agents.",
+    "posted_at": "2026-06-11T20:20:27.211521+00:00",
+    "post_id": "1069645096241110_122109524715347624"
   }
 ]
