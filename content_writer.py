@@ -227,7 +227,20 @@ def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[st
             print("[url] grounding returned no URL, retrying once for source...")
             post2, url2 = _generate_post(base_prompt + extra + "\n\n(จำเป็นต้องมี URL แหล่งที่มา เลือกข่าวที่อ้างอิง source ได้ชัดเจน)")
             if url2:
-                post, url = post2, url2
+                emb2 = _get_embedding(post2)
+                is_dup2 = False
+                if emb2 and history:
+                    sim2 = _max_similarity(emb2, history)
+                    if sim2 >= SIM_HARD_REJECT:
+                        is_dup2 = True
+                    elif sim2 >= SIM_LLM_CHECK:
+                        is_dup2 = _is_duplicate(post2, history)
+                elif history:
+                    is_dup2 = _is_duplicate(post2, history)
+                if not is_dup2:
+                    post, url = post2, url2
+                else:
+                    print("[url] URL retry is duplicate, keeping original post (no URL)")
 
         topic_label = _extract_topic_label(post)
         return post, url, topic_label
