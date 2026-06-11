@@ -54,10 +54,11 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 
 หัวข้อที่สนใจ (เรียงตามความสำคัญ):
 1. AI agents และ agentic workflows — เช่น multi-agent systems, MCP (Model Context Protocol), AI ที่ทำงานแทนคน, tool use, computer use, agent orchestration, autonomous coding agents
-2. AI model ใหม่และ benchmark — Claude, Gemini, GPT, Llama, Mistral และโมเดลอื่นๆ ความสามารถใหม่, context window, reasoning, multimodal
-3. AI ในการทำงานจริง — coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
-4. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
-5. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
+2. Claude ecosystem — MCP servers เจ๋งๆ, plugins, skills, integrations ใหม่; แอป เว็บ หรือ product ที่สร้างด้วย Claude Code หรือ Claude API; use cases จริงที่คนเอา Claude ไปทำอะไรได้น่าทึ่ง
+3. AI model ใหม่และ benchmark — Claude, Gemini, GPT, Llama, Mistral และโมเดลอื่นๆ ความสามารถใหม่, context window, reasoning, multimodal
+4. AI ในการทำงานจริง — coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
+5. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
+6. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
 
 ลดความสำคัญ: ข่าว fundraising, valuation, IPO, การระดมทุน — เลือกเฉพาะเมื่อไม่มีข่าวเทคนิคหรือ product ที่น่าสนใจกว่า
 
