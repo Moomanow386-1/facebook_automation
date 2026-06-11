@@ -202,10 +202,11 @@ def generate_overlay_text(post: str) -> tuple[str, str]:
 def _build_engagement_hint(posted_history: list[dict]) -> str:
     scored = []
     for item in posted_history:
+        views = item.get("views") or 0
         likes = item.get("likes") or 0
         comments = item.get("comments") or 0
         shares = item.get("shares") or 0
-        score = likes + comments * 2 + shares * 3
+        score = round(views * 0.1) + likes + comments * 2 + shares * 3
         topic = item.get("topic", "")
         if score > 0 and topic:
             scored.append((score, topic))
