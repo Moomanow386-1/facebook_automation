@@ -203,10 +203,11 @@ def _build_engagement_hint(posted_history: list[dict]) -> str:
     scored = []
     for item in posted_history:
         views = item.get("views") or 0
-        likes = item.get("likes") or 0
+        reactions = item.get("reactions") or item.get("likes") or 0
         comments = item.get("comments") or 0
         shares = item.get("shares") or 0
-        score = round(views * 0.1) + likes + comments * 2 + shares * 3
+        clicks = item.get("clicks") or 0
+        score = round(views * 0.1) + reactions + comments * 2 + shares * 3 + round(clicks * 1.5)
         topic = item.get("topic", "")
         if score > 0 and topic:
             scored.append((score, topic))

@@ -119,33 +119,36 @@ def refresh_metrics(data: list[dict]) -> tuple[list[dict], bool]:
             res = requests.get(
                 f"{BASE_URL}/{post_id}",
                 params={
-                    "fields": "likes.summary(true),comments.summary(true),shares",
+                    "fields": "reactions.summary(true),comments.summary(true),shares",
                     "access_token": PAGE_ACCESS_TOKEN,
                 },
                 timeout=10,
             )
             if res.status_code == 200:
                 d = res.json()
-                entry["likes"] = d.get("likes", {}).get("summary", {}).get("total_count", 0)
+                entry["reactions"] = d.get("reactions", {}).get("summary", {}).get("total_count", 0)
                 entry["comments"] = d.get("comments", {}).get("summary", {}).get("total_count", 0)
                 entry["shares"] = d.get("shares", {}).get("count", 0)
-            # try fetch impressions (ยอดดู) from insights — requires pages_read_insights
+            # fetch impressions + clicks from insights — requires pages_read_insights
             ins_res = requests.get(
                 f"{BASE_URL}/{post_id}/insights",
                 params={
-                    "metric": "post_impressions_unique",
+                    "metric": "post_impressions_unique,post_clicks",
                     "period": "lifetime",
                     "access_token": PAGE_ACCESS_TOKEN,
                 },
                 timeout=10,
             )
             if ins_res.status_code == 200:
-                ins_data = ins_res.json().get("data", [])
-                if ins_data:
-                    entry["views"] = ins_data[0].get("values", [{}])[-1].get("value", 0)
+                for item in ins_res.json().get("data", []):
+                    val = item.get("values", [{}])[-1].get("value", 0)
+                    if item.get("name") == "post_impressions_unique":
+                        entry["views"] = val
+                    elif item.get("name") == "post_clicks":
+                        entry["clicks"] = val
             entry["metrics_refreshed_at"] = now.isoformat()
             changed = True
-            print(f"[metrics] {post_id}: views={entry.get('views', '?')} likes={entry.get('likes', 0)} comments={entry.get('comments', 0)} shares={entry.get('shares', 0)}")
+            print(f"[metrics] {post_id}: views={entry.get('views','?')} reactions={entry.get('reactions',0)} comments={entry.get('comments',0)} shares={entry.get('shares',0)} clicks={entry.get('clicks','?')}")
         except Exception as e:
             print(f"[metrics] failed for {post_id}: {e}")
     return data, changed
