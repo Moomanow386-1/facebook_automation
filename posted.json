@@ -1,14 +1,5 @@
 [
   {
-    "url": "",
-    "topic": "Microsoft launches MAI-Thinking-1, its first proprietary reasoning model to reduce dependency on partners.",
-    "posted_at": "2026-06-07T10:59:46.408158+00:00",
-    "post_id": "1069645096241110_122105438367347624",
-    "metrics_refreshed_at": "2026-06-11T17:59:28.203070+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "https://wtaq.com/2026/06/05/spacex-lands-google-ai-compute-deal-after-anthropic-pact-ahead-of-ipo/",
     "topic": "Google signs $920M/month deal with SpaceX for massive Nvidia GPU compute capacity.",
     "posted_at": "2026-06-07T13:13:29.688450+00:00",
@@ -256,5 +247,11 @@
     "topic": "OpenAI acquires Ona to enable persistent, long-running autonomous AI coding agents.",
     "posted_at": "2026-06-11T20:20:27.211521+00:00",
     "post_id": "1069645096241110_122109524715347624"
+  },
+  {
+    "url": "",
+    "topic": "VS Code 1.124 release – Autopilot agents now run tasks automatically by default.",
+    "posted_at": "2026-06-11T22:47:32.877878+00:00",
+    "post_id": "1069645096241110_122109629973347624"
   }
 ]
