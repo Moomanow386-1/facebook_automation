@@ -4,6 +4,7 @@ Usage:
   python daily_poster.py --dry-run -- preview without posting
 """
 import sys
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 import json
 import os
 import requests
