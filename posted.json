@@ -1,13 +1,6 @@
 [
   {
     "url": "",
-    "topic": "**Anthropic: Claude writes 80% of its code, eyeing self-improvement with safety guardrails.**",
-    "posted_at": "2026-06-07T05:16:23.842865+00:00",
-    "post_id": "1069645096241110_122105265915347624",
-    "metrics_refreshed_at": "2026-06-11T09:48:31.387343+00:00"
-  },
-  {
-    "url": "",
     "topic": "Nvidia releases Cosmos 3: An open-source omnimodel for Physical AI and robotics.",
     "posted_at": "2026-06-07T05:19:52.477179+00:00",
     "post_id": "1069645096241110_122105267445347624",
@@ -208,6 +201,15 @@
     "url": "https://finance.technews.tw/2026/06/11/ai-coding-agents-write-180-more-code-but-ship-only-30-more-software/",
     "topic": "MIT study: AI coding agents increase code volume, but adoption into production remains low.",
     "posted_at": "2026-06-11T07:20:31.348496+00:00",
-    "post_id": "1069645096241110_122108947227347624"
+    "post_id": "1069645096241110_122108947227347624",
+    "views": 2,
+    "clicks": 0,
+    "metrics_refreshed_at": "2026-06-11T13:39:03.852758+00:00"
+  },
+  {
+    "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
+    "topic": "Google DeepMind launches DiffusionGemma: a fast, non-autoregressive text diffusion model.",
+    "posted_at": "2026-06-11T13:58:22.794227+00:00",
+    "post_id": "1069645096241110_122109259767347624"
   }
 ]
