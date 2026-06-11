@@ -1,5 +1,6 @@
 import math
 import time
+import httpx
 from google import genai
 from google.genai import types
 from google.genai.errors import ServerError
@@ -18,8 +19,8 @@ def _with_retry(fn):
     for delay in _RETRY_DELAYS:
         try:
             return fn()
-        except ServerError as exc:
-            print(f"[retry] ServerError: {exc}, retrying in {delay}s…")
+        except (ServerError, httpx.ReadError, httpx.ConnectError, httpx.RemoteProtocolError) as exc:
+            print(f"[retry] {type(exc).__name__}: {exc}, retrying in {delay}s…")
             time.sleep(delay)
     return fn()
 
