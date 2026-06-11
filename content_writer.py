@@ -60,6 +60,17 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 5. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
 6. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
 
+แหล่งข่าวที่ควร prioritize (official first):
+- Anthropic: anthropic.com/news, anthropic.com/research
+- OpenAI: openai.com/blog, openai.com/research
+- Google DeepMind: deepmind.google/discover/blog, blog.google/technology/ai
+- Meta AI: ai.meta.com/blog
+- Mistral: mistral.ai/news
+- Hugging Face: huggingface.co/blog
+- GitHub / Microsoft: github.blog, blogs.microsoft.com/ai
+- NVIDIA: developer.nvidia.com/blog, nvidianews.nvidia.com
+- แหล่งรอง: TechCrunch, The Verge, Wired, Ars Technica, VentureBeat (AI section)
+
 ลดความสำคัญ: ข่าว fundraising, valuation, IPO, การระดมทุน — เลือกเฉพาะเมื่อไม่มีข่าวเทคนิคหรือ product ที่น่าสนใจกว่า
 
 สไตล์การเขียน:
