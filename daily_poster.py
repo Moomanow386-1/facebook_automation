@@ -90,9 +90,61 @@ def post_comment(post_id: str, message: str):
         print(f"Comment skipped (permission not available)")
 
 
+def refresh_metrics(data: list[dict]) -> tuple[list[dict], bool]:
+    """Fetch likes/comments/shares for posts that are 6+ hours old and not yet refreshed."""
+    from datetime import datetime, timezone, timedelta
+    now = datetime.now(timezone.utc)
+    changed = False
+    for entry in data:
+        post_id = entry.get("post_id")
+        if not post_id:
+            continue
+        posted_at = entry.get("posted_at")
+        if posted_at:
+            try:
+                post_dt = datetime.fromisoformat(posted_at)
+                if (now - post_dt).total_seconds() < 6 * 3600:
+                    continue
+            except Exception:
+                pass
+        last_refresh = entry.get("metrics_refreshed_at")
+        if last_refresh:
+            try:
+                refresh_dt = datetime.fromisoformat(last_refresh)
+                if (now - refresh_dt).total_seconds() < 6 * 3600:
+                    continue
+            except Exception:
+                pass
+        try:
+            res = requests.get(
+                f"{BASE_URL}/{post_id}",
+                params={
+                    "fields": "likes.summary(true),comments.summary(true),shares",
+                    "access_token": PAGE_ACCESS_TOKEN,
+                },
+                timeout=10,
+            )
+            if res.status_code == 200:
+                d = res.json()
+                entry["likes"] = d.get("likes", {}).get("summary", {}).get("total_count", 0)
+                entry["comments"] = d.get("comments", {}).get("summary", {}).get("total_count", 0)
+                entry["shares"] = d.get("shares", {}).get("count", 0)
+                entry["metrics_refreshed_at"] = now.isoformat()
+                changed = True
+                print(f"[metrics] {post_id}: likes={entry['likes']} comments={entry['comments']} shares={entry['shares']}")
+        except Exception as e:
+            print(f"[metrics] failed for {post_id}: {e}")
+    return data, changed
+
+
 def post_one(dry_run: bool = False):
     print("Searching for latest tech news...")
     posted_history = load_posted_history()
+    posted_history, metrics_changed = refresh_metrics(posted_history)
+    if metrics_changed:
+        with open(POSTED_FILE, "w", encoding="utf-8") as f:
+            json.dump(posted_history, f, ensure_ascii=False, indent=2)
+        print("[metrics] posted.json updated with engagement data")
     content, url, topic_label = write_post_with_search(posted_history)
 
     real_url = resolve_url(url)

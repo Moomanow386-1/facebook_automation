@@ -199,10 +199,31 @@ def generate_overlay_text(post: str) -> tuple[str, str]:
         return post[:40], ""
 
 
+def _build_engagement_hint(posted_history: list[dict]) -> str:
+    scored = []
+    for item in posted_history:
+        likes = item.get("likes") or 0
+        comments = item.get("comments") or 0
+        shares = item.get("shares") or 0
+        score = likes + comments * 2 + shares * 3
+        topic = item.get("topic", "")
+        if score > 0 and topic:
+            scored.append((score, topic))
+    if not scored:
+        return ""
+    scored.sort(reverse=True)
+    lines = [f"- {topic} (engagement score: {score})" for score, topic in scored[:3]]
+    return (
+        "\n\nเรื่องที่ผู้ติดตามชอบมาก (ใช้เป็นแนวทางเลือก topic คล้ายกันนี้):\n"
+        + "\n".join(lines)
+    )
+
+
 def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[str, str, str]:
     history = posted_history or []
     avoid_block = _build_avoid_block(history)
-    base_prompt = PROMPT + avoid_block
+    engagement_hint = _build_engagement_hint(history)
+    base_prompt = PROMPT + avoid_block + engagement_hint
 
     for attempt in range(3):
         extra = f"\n\n(พยายามครั้งที่ {attempt + 1}: ข่าวก่อนหน้าซ้ำ เลือกเรื่องใหม่ที่ต่างออกไปเลย)" if attempt > 0 else ""
