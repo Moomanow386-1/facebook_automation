@@ -1,12 +1,6 @@
 [
   {
     "url": "",
-    "topic": "AI agent discovers 21 zero-day bugs in FFmpeg for only $1,000.",
-    "posted_at": "2026-06-07T05:02:37.898738+00:00",
-    "post_id": "1069645096241110_122105259537347624"
-  },
-  {
-    "url": "",
     "topic": "**Anthropic: Claude writes 80% of its code, eyeing self-improvement with safety guardrails.**",
     "posted_at": "2026-06-07T05:16:23.842865+00:00",
     "post_id": "1069645096241110_122105265915347624"
@@ -178,5 +172,11 @@
     "topic": "Asana and Palo Alto Networks acquire AI startups to accelerate enterprise Agentic Workflows.",
     "posted_at": "2026-06-11T04:33:00.526098+00:00",
     "post_id": "1069645096241110_122108860767347624"
+  },
+  {
+    "url": "https://finance.technews.tw/2026/06/11/ai-coding-agents-write-180-more-code-but-ship-only-30-more-software/",
+    "topic": "MIT study: AI coding agents increase code volume, but adoption into production remains low.",
+    "posted_at": "2026-06-11T07:20:31.348496+00:00",
+    "post_id": "1069645096241110_122108947227347624"
   }
 ]
