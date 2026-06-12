@@ -207,7 +207,7 @@
     "post_id": "1069645096241110_122108947227347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-12T07:09:27.487865+00:00"
+    "metrics_refreshed_at": "2026-06-12T15:41:51.131573+00:00"
   },
   {
     "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
@@ -216,7 +216,7 @@
     "post_id": "1069645096241110_122109259767347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-12T07:09:27.487865+00:00"
+    "metrics_refreshed_at": "2026-06-12T15:41:51.131573+00:00"
   },
   {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
@@ -232,18 +232,18 @@
     "topic": "OpenAI acquires Ona to enable persistent, long-running autonomous AI coding agents.",
     "posted_at": "2026-06-11T20:20:27.211521+00:00",
     "post_id": "1069645096241110_122109524715347624",
-    "views": 1,
+    "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-12T07:09:27.487865+00:00"
+    "metrics_refreshed_at": "2026-06-12T15:41:51.131573+00:00"
   },
   {
     "url": "",
     "topic": "VS Code 1.124 release – Autopilot agents now run tasks automatically by default.",
     "posted_at": "2026-06-11T22:47:32.877878+00:00",
     "post_id": "1069645096241110_122109629973347624",
-    "views": 1,
+    "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-12T07:09:27.487865+00:00"
+    "metrics_refreshed_at": "2026-06-12T15:41:51.131573+00:00"
   },
   {
     "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/",
@@ -258,6 +258,9 @@
     "url": "",
     "topic": "Google DeepMind and partners launch $10M fund for multi-agent AI safety research.",
     "posted_at": "2026-06-12T07:11:56.676461+00:00",
-    "post_id": "1069645096241110_122109929445347624"
+    "post_id": "1069645096241110_122109929445347624",
+    "views": 2,
+    "clicks": 0,
+    "metrics_refreshed_at": "2026-06-12T15:41:51.131573+00:00"
   }
 ]
