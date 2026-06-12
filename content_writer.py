@@ -85,7 +85,9 @@ PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่า�
 - ห้ามใช้ emoji มากเกิน 1 ตัว
 - ห้ามพูดถึง link ในโพสต์
 
-ห้ามใส่ URL หรือ SOURCE_URL ในโพสต์"""
+ห้ามใส่ URL หรือ SOURCE_URL ในโพสต์
+
+ตอบด้วยเนื้อหาโพสต์ Facebook เท่านั้น ห้ามใส่หัวข้อ, ส่วน "แหล่งข่าวอ้างอิง", หรือ section header ใดๆ ทั้งสิ้น ให้เริ่มด้วยประโยคแรกของโพสต์ได้เลย"""
 
 
 def _build_avoid_block(posted_history: list[dict]) -> str:
@@ -152,6 +154,9 @@ def _generate_post(prompt: str) -> tuple[str, str]:
     else:
         raise last_exc
     post = response.text.strip()
+    # Gemini sometimes wraps the post in a structured format — strip it
+    if "**เนื้อหาสำหรับโพสต์ Facebook:**" in post:
+        post = post.split("**เนื้อหาสำหรับโพสต์ Facebook:**", 1)[1].strip()
     url = ""
     try:
         chunks = response.candidates[0].grounding_metadata.grounding_chunks
