@@ -66,7 +66,7 @@ def get_og_image(url: str) -> str | None:
     if not url:
         return None
     try:
-        res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+        res = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"})
         print(f"[og] status={res.status_code} url={url[:80]}")
         soup = BeautifulSoup(res.text, "html.parser")
         tag = soup.find("meta", property="og:image") or soup.find("meta", attrs={"name": "twitter:image"})
