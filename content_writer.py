@@ -54,10 +54,10 @@ def _max_similarity(embedding: list[float], posted_history: list[dict]) -> float
 PROMPT = """ค้นหาข่าว tech หรือ AI ที่น่าสนใจที่สุดที่เกิดขึ้นใน 7 วันล่าสุด แล้วเขียนโพสต์ Facebook ภาษาไทย 1 โพสต์ ให้เลือกข่าวที่มี URL แหล่งที่มาชัดเจนอ้างอิงได้
 
 หัวข้อที่สนใจ (เรียงตามความสำคัญ):
-1. AI agents และ agentic workflows — เช่น multi-agent systems, MCP (Model Context Protocol), AI ที่ทำงานแทนคน, tool use, computer use, agent orchestration, autonomous coding agents
+1. AI agents และ agentic workflows — เช่น multi-agent systems, MCP (Model Context Protocol), AI ที่ทำงานแทนคน, tool use, computer use, agent orchestration, autonomous coding agents; **รวมถึงกรณีที่ AI (Claude, GPT, Gemini หรือเจ้าอื่น) เข้ามาแทนที่งานหรืออาชีพของคนจริงๆ** เช่น AI lawyer, AI writer, AI accountant, AI radiologist, งานที่บริษัทเริ่ม replace คนด้วย AI แล้ว
 2. Claude ecosystem — MCP servers เจ๋งๆ, plugins, skills, integrations ใหม่; แอป เว็บ หรือ product ที่สร้างด้วย Claude Code หรือ Claude API; use cases จริงที่คนเอา Claude ไปทำอะไรได้น่าทึ่ง
 3. AI model ใหม่และ benchmark — Claude, Gemini, GPT, Llama, Mistral และโมเดลอื่นๆ ความสามารถใหม่, context window, reasoning, multimodal
-4. AI ในการทำงานจริง — coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption
+4. AI ในการทำงานจริง — coding agents, AI สำหรับธุรกิจ, workflow automation, AI engineer tools, enterprise AI adoption; ผลกระทบของ AI ต่อตลาดแรงงาน, อาชีพที่มีความเสี่ยงถูก automate, รายงานจากบริษัทหรือนักวิจัยเกี่ยวกับ AI displacement
 5. เทคโนโลยีใหม่ — robot, semiconductor, quantum computing, space, NASA, SpaceX
 6. ข่าวหุ้น tech (ถ้าไม่มีข่าวอื่นที่น่าสนใจกว่า): NVDA, AMD, TSMC, Apple, Microsoft — เช่น ผลประกอบการ, demand chip, AI chip cycle
 
