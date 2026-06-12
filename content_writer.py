@@ -253,23 +253,25 @@ def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[st
                 continue
 
         if not url:
-            print("[url] grounding returned no URL, retrying once for source...")
-            post2, url2 = _generate_post(base_prompt + extra + "\n\n(จำเป็นต้องมี URL แหล่งที่มา เลือกข่าวที่อ้างอิง source ได้ชัดเจน)")
-            if url2:
-                emb2 = _get_embedding(post2)
-                is_dup2 = False
-                if emb2 and history:
-                    sim2 = _max_similarity(emb2, history)
-                    if sim2 >= SIM_HARD_REJECT:
-                        is_dup2 = True
-                    elif sim2 >= SIM_LLM_CHECK:
+            for url_attempt in range(1, 4):
+                print(f"[url] grounding returned no URL, retrying for source (attempt {url_attempt}/3)...")
+                post2, url2 = _generate_post(base_prompt + extra + "\n\n(จำเป็นต้องมี URL แหล่งที่มา เลือกข่าวที่อ้างอิง source ได้ชัดเจน)")
+                if url2:
+                    emb2 = _get_embedding(post2)
+                    is_dup2 = False
+                    if emb2 and history:
+                        sim2 = _max_similarity(emb2, history)
+                        if sim2 >= SIM_HARD_REJECT:
+                            is_dup2 = True
+                        elif sim2 >= SIM_LLM_CHECK:
+                            is_dup2 = _is_duplicate(post2, history)
+                    elif history:
                         is_dup2 = _is_duplicate(post2, history)
-                elif history:
-                    is_dup2 = _is_duplicate(post2, history)
-                if not is_dup2:
-                    post, url = post2, url2
-                else:
-                    print("[url] URL retry is duplicate, keeping original post (no URL)")
+                    if not is_dup2:
+                        post, url = post2, url2
+                        break
+                    else:
+                        print(f"[url] URL retry attempt {url_attempt} is duplicate, trying again...")
 
         topic_label = _extract_topic_label(post)
         return post, url, topic_label
