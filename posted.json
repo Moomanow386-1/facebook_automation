@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.buildfastwithai.com/blogs/ai-news-today-june-8-2026",
-    "topic": "Apple WWDC 2026: Siri 2.0 powered by Google Gemini and new AI agent capabilities.",
-    "posted_at": "2026-06-08T12:56:00.532260+00:00",
-    "post_id": "1069645096241110_122106477561347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
-    "views": 3,
-    "clicks": 1
-  },
-  {
     "url": "https://gizmodo.com/meta-says-thousands-of-instagram-accounts-were-breached-through-its-ai-support-assistant-2000768770",
     "topic": "Meta’s AI support bot exploited to hijack 20,000+ Instagram accounts.",
     "posted_at": "2026-06-08T17:42:35.799760+00:00",
@@ -171,7 +162,7 @@
     "post_id": "1069645096241110_122108947227347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T06:44:03.462069+00:00"
+    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
   },
   {
     "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
@@ -180,7 +171,7 @@
     "post_id": "1069645096241110_122109259767347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T06:44:03.462069+00:00"
+    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
   },
   {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
@@ -198,7 +189,7 @@
     "post_id": "1069645096241110_122109524715347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T06:44:03.462069+00:00"
+    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
   },
   {
     "url": "",
@@ -207,7 +198,7 @@
     "post_id": "1069645096241110_122109629973347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T06:44:03.462069+00:00"
+    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
   },
   {
     "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/",
@@ -225,7 +216,7 @@
     "post_id": "1069645096241110_122109929445347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T06:44:03.462069+00:00"
+    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
   },
   {
     "url": "https://www.nasdaq.com/newsroom/verafin-expands-agentic-ai-workforce-next-gen-aml-fraud-automation",
@@ -259,5 +250,11 @@
     "topic": "Google launches proactive AI Search agents for continuous web monitoring and updates.",
     "posted_at": "2026-06-13T11:10:44.172131+00:00",
     "post_id": "1069645096241110_122111079867347624"
+  },
+  {
+    "url": "https://www.theguardian.com/technology/2026/jun/13/anthropic-disable-advanced-ai-models-us-government-order",
+    "topic": "US government bans Claude Fable 5 and Mythos 5 over national security concerns.",
+    "posted_at": "2026-06-13T13:18:42.965932+00:00",
+    "post_id": "1069645096241110_122111188089347624"
   }
 ]
