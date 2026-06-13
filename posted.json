@@ -144,7 +144,7 @@
     "post_id": "1069645096241110_122108947227347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
@@ -153,7 +153,7 @@
     "post_id": "1069645096241110_122109259767347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
@@ -171,7 +171,7 @@
     "post_id": "1069645096241110_122109524715347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "",
@@ -180,7 +180,7 @@
     "post_id": "1069645096241110_122109629973347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/",
@@ -198,7 +198,7 @@
     "post_id": "1069645096241110_122109929445347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T13:16:49.864219+00:00"
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "https://www.nasdaq.com/newsroom/verafin-expands-agentic-ai-workforce-next-gen-aml-fraud-automation",
@@ -240,7 +240,8 @@
     "url": "https://www.theguardian.com/technology/2026/jun/13/anthropic-disable-advanced-ai-models-us-government-order",
     "topic": "US government bans Claude Fable 5 and Mythos 5 over national security concerns.",
     "posted_at": "2026-06-13T13:18:42.965932+00:00",
-    "post_id": "1069645096241110_122111188089347624"
+    "post_id": "1069645096241110_122111188089347624",
+    "metrics_refreshed_at": "2026-06-13T21:55:41.369558+00:00"
   },
   {
     "url": "",
