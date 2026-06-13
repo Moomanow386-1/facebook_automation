@@ -1,19 +1,10 @@
 [
   {
-    "url": "https://www.buildfastwithai.com/blogs/openai-sites-codex-launch-review-2026",
-    "topic": "OpenAI launches 'Sites' for instant no-code web app creation via prompts.",
-    "posted_at": "2026-06-08T19:57:32.594095+00:00",
-    "post_id": "1069645096241110_122106859761347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "https://www.digitimes.com/news/a20260601VL217/jensen-huang-nvidia-gtc-ai-agent-cpu-2026.html",
     "topic": "NVIDIA launches Vera: world's first CPU specifically designed for AI agent workloads.",
     "posted_at": "2026-06-08T22:25:24.437932+00:00",
     "post_id": "1069645096241110_122106934593347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -22,7 +13,7 @@
     "topic": "Harness-1: 20B open-source AI search agent outperforms GPT-5.4.",
     "posted_at": "2026-06-09T01:48:40.085536+00:00",
     "post_id": "1069645096241110_122107051329347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -31,7 +22,7 @@
     "topic": "MCP SDK reaches 110M downloads; new release introduces stateless architecture for scalable AI agents.",
     "posted_at": "2026-06-09T06:42:42.241199+00:00",
     "post_id": "1069645096241110_122107182669347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 1
   },
@@ -40,14 +31,14 @@
     "topic": "Claude Opus 4.8 launch – introduces agentic orchestration via Claude Code.",
     "posted_at": "2026-06-09T11:53:04.957102+00:00",
     "post_id": "1069645096241110_122107357299347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "",
     "topic": "Descope launches Agentic Identity Hub 2.5 to secure autonomous AI agent access.",
     "posted_at": "2026-06-09T14:14:55.840790+00:00",
     "post_id": "1069645096241110_122107458471347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -56,7 +47,7 @@
     "topic": "UC Berkeley launches ALE: a rigorous new benchmark where top AI agents struggle.",
     "posted_at": "2026-06-09T17:30:26.156953+00:00",
     "post_id": "1069645096241110_122107608195347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 1
   },
@@ -65,7 +56,7 @@
     "topic": "Mistral rebrands Le Chat to Mistral Vibe, launching agentic coding platforms and industrial AI solutions.",
     "posted_at": "2026-06-09T22:18:08.012524+00:00",
     "post_id": "1069645096241110_122107764525347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -74,7 +65,7 @@
     "topic": "Anthropic releases Claude Fable 5 and Mythos 5 models.",
     "posted_at": "2026-06-10T01:59:31.249797+00:00",
     "post_id": "1069645096241110_122107869249347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -83,7 +74,7 @@
     "topic": "U of Toronto researchers develop autonomous AI worm using local LLMs for self-spreading cyberattacks.",
     "posted_at": "2026-06-10T06:56:31.047684+00:00",
     "post_id": "1069645096241110_122108031063347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 1
   },
@@ -92,14 +83,14 @@
     "topic": "**NIST proves mathematically that 100% secure AI guardrails are impossible.**",
     "posted_at": "2026-06-10T07:37:09.537479+00:00",
     "post_id": "1069645096241110_122108056233347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://www.investing.com/news/stock-market-news/eu-regulators-order-meta-to-allow-rival-ai-chatbots-free-access-to-whatsapp-4733539",
     "topic": "EU orders Meta to provide free WhatsApp API access to AI competitors amid antitrust probe.",
     "posted_at": "2026-06-10T07:52:20.804838+00:00",
     "post_id": "1069645096241110_122108063205347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 1
   },
@@ -108,7 +99,7 @@
     "topic": "Nvidia releases Nemotron 3 Ultra: efficient hybrid architecture for scalable AI agent workflows.",
     "posted_at": "2026-06-10T07:57:51.214343+00:00",
     "post_id": "1069645096241110_122108066199347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 3
   },
@@ -117,14 +108,14 @@
     "topic": "Varonis study: AI agents tricked into leaking sensitive corporate data via phishing.",
     "posted_at": "2026-06-10T12:13:28.909068+00:00",
     "post_id": "122108284941347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemma-4-12b/",
     "topic": "Google releases Gemma 4 12B: encoder-free, native multimodal model for offline laptops.",
     "posted_at": "2026-06-10T17:48:37.491902+00:00",
     "post_id": "1069645096241110_122108496291347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 2
   },
@@ -133,7 +124,7 @@
     "topic": "Microsoft and NVIDIA partner to secure AI agents via OS-level kernel sandboxing.",
     "posted_at": "2026-06-10T22:46:43.117940+00:00",
     "post_id": "1069645096241110_122108663409347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00",
     "views": 2,
     "clicks": 0
   },
@@ -144,7 +135,7 @@
     "post_id": "1069645096241110_122108860767347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://finance.technews.tw/2026/06/11/ai-coding-agents-write-180-more-code-but-ship-only-30-more-software/",
@@ -171,7 +162,7 @@
     "post_id": "1069645096241110_122109439629347624",
     "views": 1,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://www.pymnts.com/acquisitions/2026/openai-plans-ona-purchase-transform-coding-agents/",
@@ -198,7 +189,7 @@
     "post_id": "1069645096241110_122109748587347624",
     "views": 2,
     "clicks": 1,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "",
@@ -216,7 +207,7 @@
     "post_id": "1069645096241110_122110395219347624",
     "views": 1,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://enterprisedna.co/resources/news/kpmg-microsoft-agent-365-enterprise-governance-2026/",
@@ -225,22 +216,25 @@
     "post_id": "1069645096241110_122110693323347624",
     "views": 1,
     "clicks": 1,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://www.crowdfundinsider.com/2026/06/284950-mastercard-introduces-agent-pay-for-machines-to-enable-autonomous-ai-transactions/",
     "topic": "Mastercard launches AP4M for autonomous AI-to-AI micro-payments and machine-to-machine transactions.",
     "posted_at": "2026-06-13T02:01:44.904429+00:00",
     "post_id": "1069645096241110_122110705173347624",
-    "views": 1,
+    "views": 2,
     "clicks": 1,
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00"
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://9to5google.com/2026/06/12/google-information-agents/",
     "topic": "Google launches proactive AI Search agents for continuous web monitoring and updates.",
     "posted_at": "2026-06-13T11:10:44.172131+00:00",
-    "post_id": "1069645096241110_122111079867347624"
+    "post_id": "1069645096241110_122111079867347624",
+    "views": 2,
+    "clicks": 1,
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
   },
   {
     "url": "https://www.theguardian.com/technology/2026/jun/13/anthropic-disable-advanced-ai-models-us-government-order",
@@ -253,6 +247,15 @@
     "topic": "US restricts Fable 5 and Mythos 5 access to non-US citizens; Claude suspends Fable 5.",
     "posted_at": "2026-06-13T02:01:42+0000",
     "post_id": "1069645096241110_122110705191347624",
-    "manual": true
+    "manual": true,
+    "views": 4,
+    "clicks": 3,
+    "metrics_refreshed_at": "2026-06-13T19:02:49.361617+00:00"
+  },
+  {
+    "url": "https://enterprisedna.co/resources/news/openai-chatgpt-superapp-agents-enterprise-pivot-2026/",
+    "topic": "OpenAI pivots ChatGPT to AI agent-based Superapp ahead of IPO.",
+    "posted_at": "2026-06-13T19:04:35.899879+00:00",
+    "post_id": "1069645096241110_122111443647347624"
   }
 ]
