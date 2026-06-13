@@ -155,11 +155,55 @@ def refresh_metrics(data: list[dict]) -> tuple[list[dict], bool]:
     return data, changed
 
 
+def sync_manual_posts(posted_history: list[dict]) -> tuple[list[dict], bool]:
+    """Fetch recent page posts from Facebook and add any not in posted_history."""
+    from content_writer import _get_embedding, _extract_topic_label
+    known_ids = {e.get("post_id") for e in posted_history if e.get("post_id")}
+    try:
+        res = requests.get(
+            f"{BASE_URL}/{PAGE_ID}/posts",
+            params={"fields": "id,message,created_time", "limit": 10, "access_token": PAGE_ACCESS_TOKEN},
+        )
+        if res.status_code != 200:
+            return posted_history, False
+        posts = res.json().get("data", [])
+    except Exception:
+        return posted_history, False
+
+    changed = False
+    from datetime import datetime, timezone
+    for post in posts:
+        pid = post.get("id")
+        if not pid or pid in known_ids:
+            continue
+        message = post.get("message", "").strip()
+        if not message:
+            continue
+        print(f"[sync] found untracked manual post {pid}, adding to dedup history...")
+        embedding = _get_embedding(message)
+        topic = _extract_topic_label(message)
+        entry = {
+            "url": "",
+            "topic": topic,
+            "posted_at": post.get("created_time", datetime.now(timezone.utc).isoformat()),
+            "post_id": pid,
+            "manual": True,
+        }
+        if embedding:
+            entry["embedding"] = embedding
+        posted_history.append(entry)
+        posted_history = posted_history[-30:]
+        changed = True
+
+    return posted_history, changed
+
+
 def post_one(dry_run: bool = False):
     print("Searching for latest tech news...")
     posted_history = load_posted_history()
     posted_history, metrics_changed = refresh_metrics(posted_history)
-    if metrics_changed:
+    posted_history, sync_changed = sync_manual_posts(posted_history)
+    if metrics_changed or sync_changed:
         with open(POSTED_FILE, "w", encoding="utf-8") as f:
             json.dump(posted_history, f, ensure_ascii=False, indent=2)
         print("[metrics] posted.json updated with engagement data")
