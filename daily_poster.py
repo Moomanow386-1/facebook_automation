@@ -264,6 +264,29 @@ def post_one(dry_run: bool = False):
         print(f"Error {res.status_code}: {res.json()}")
 
 
+def add_manual_post(text: str, url: str = "", topic: str = ""):
+    """Add a manually-written post to posted.json so the bot won't duplicate it."""
+    from content_writer import _get_embedding, _extract_topic_label
+    print("[manual] Generating embedding...")
+    embedding = _get_embedding(text)
+    if not topic:
+        topic = _extract_topic_label(text)
+    save_posted_entry(url, topic, embedding, post_id=None)
+    print(f"[manual] Saved to posted.json — topic: {topic}")
+
+
 if __name__ == "__main__":
-    dry_run = "--dry-run" in sys.argv
-    post_one(dry_run=dry_run)
+    if "--add-manual" in sys.argv:
+        idx = sys.argv.index("--add-manual")
+        manual_text = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else ""
+        if not manual_text:
+            print("Usage: py daily_poster.py --add-manual \"<post text>\" [--url <url>]")
+            sys.exit(1)
+        manual_url = ""
+        if "--url" in sys.argv:
+            u_idx = sys.argv.index("--url")
+            manual_url = sys.argv[u_idx + 1] if u_idx + 1 < len(sys.argv) else ""
+        add_manual_post(manual_text, url=manual_url)
+    else:
+        dry_run = "--dry-run" in sys.argv
+        post_one(dry_run=dry_run)
