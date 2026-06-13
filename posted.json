@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://gizmodo.com/meta-says-thousands-of-instagram-accounts-were-breached-through-its-ai-support-assistant-2000768770",
-    "topic": "Meta’s AI support bot exploited to hijack 20,000+ Instagram accounts.",
-    "posted_at": "2026-06-08T17:42:35.799760+00:00",
-    "post_id": "1069645096241110_122106763425347624",
-    "metrics_refreshed_at": "2026-06-13T11:06:42.322426+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "https://www.buildfastwithai.com/blogs/openai-sites-codex-launch-review-2026",
     "topic": "OpenAI launches 'Sites' for instant no-code web app creation via prompts.",
     "posted_at": "2026-06-08T19:57:32.594095+00:00",
@@ -256,5 +247,12 @@
     "topic": "US government bans Claude Fable 5 and Mythos 5 over national security concerns.",
     "posted_at": "2026-06-13T13:18:42.965932+00:00",
     "post_id": "1069645096241110_122111188089347624"
+  },
+  {
+    "url": "",
+    "topic": "US restricts Fable 5 and Mythos 5 access to non-US citizens; Claude suspends Fable 5.",
+    "posted_at": "2026-06-13T02:01:42+0000",
+    "post_id": "1069645096241110_122110705191347624",
+    "manual": true
   }
 ]
