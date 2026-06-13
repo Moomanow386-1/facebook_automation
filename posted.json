@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.forbes.com/sites/digital-assets/2026/06/07/visa-mastercard-and-coinbase-are-fighting-over-how-ai-agents-pay/",
-    "topic": "Fintech giants and Web3 leaders race to enable autonomous AI payments.",
-    "posted_at": "2026-06-07T21:56:23.356630+00:00",
-    "post_id": "1069645096241110_122105896401347624",
-    "metrics_refreshed_at": "2026-06-12T19:48:18.987062+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "",
     "topic": "**Microsoft unveils Majorana 2: AI-designed quantum chip with 1,000x increased stability.**",
     "posted_at": "2026-06-08T02:10:22.262186+00:00",
@@ -258,6 +249,15 @@
     "url": "https://www.nasdaq.com/newsroom/verafin-expands-agentic-ai-workforce-next-gen-aml-fraud-automation",
     "topic": "Nasdaq Verafin launches Agentic AI for fully automated financial crime detection and resolution.",
     "posted_at": "2026-06-12T17:31:13.682508+00:00",
-    "post_id": "1069645096241110_122110395219347624"
+    "post_id": "1069645096241110_122110395219347624",
+    "views": 1,
+    "clicks": 0,
+    "metrics_refreshed_at": "2026-06-13T01:39:50.659242+00:00"
+  },
+  {
+    "url": "https://enterprisedna.co/resources/news/kpmg-microsoft-agent-365-enterprise-governance-2026/",
+    "topic": "KPMG and Microsoft partner to deploy enterprise AI agents with advanced governance and security.",
+    "posted_at": "2026-06-13T01:43:53.629862+00:00",
+    "post_id": "1069645096241110_122110693323347624"
   }
 ]
