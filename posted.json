@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.youtube.com/watch?v=kAVRFYgCPg0",
-    "topic": "MCP SDK reaches 110M downloads; new release introduces stateless architecture for scalable AI agents.",
-    "posted_at": "2026-06-09T06:42:42.241199+00:00",
-    "post_id": "1069645096241110_122107182669347624",
-    "metrics_refreshed_at": "2026-06-14T11:21:23.408841+00:00",
-    "views": 2,
-    "clicks": 1
-  },
-  {
     "url": "https://www.anthropic.com/news/claude-opus-4-8",
     "topic": "Claude Opus 4.8 launch – introduces agentic orchestration via Claude Code.",
     "posted_at": "2026-06-09T11:53:04.957102+00:00",
@@ -126,7 +117,7 @@
     "post_id": "1069645096241110_122108947227347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
@@ -135,7 +126,7 @@
     "post_id": "1069645096241110_122109259767347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
@@ -153,7 +144,7 @@
     "post_id": "1069645096241110_122109524715347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "",
@@ -162,7 +153,7 @@
     "post_id": "1069645096241110_122109629973347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/",
@@ -180,7 +171,7 @@
     "post_id": "1069645096241110_122109929445347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "https://www.nasdaq.com/newsroom/verafin-expands-agentic-ai-workforce-next-gen-aml-fraud-automation",
@@ -223,7 +214,7 @@
     "topic": "US government bans Claude Fable 5 and Mythos 5 over national security concerns.",
     "posted_at": "2026-06-13T13:18:42.965932+00:00",
     "post_id": "1069645096241110_122111188089347624",
-    "metrics_refreshed_at": "2026-06-14T07:11:31.047754+00:00"
+    "metrics_refreshed_at": "2026-06-14T13:22:01.295381+00:00"
   },
   {
     "url": "",
@@ -258,5 +249,11 @@
     "topic": "TCS targets 1:1 ratio of AI agents to human employees within three years.",
     "posted_at": "2026-06-14T11:24:06.765305+00:00",
     "post_id": "1069645096241110_122112067305347624"
+  },
+  {
+    "url": "https://www.digitalapplied.com/blog/anthropic-advanced-ai-framework-2026-business-readout",
+    "topic": "Anthropic invests $350M to address AI-driven job displacement and proposes UBI for workers.",
+    "posted_at": "2026-06-14T13:23:01.627571+00:00",
+    "post_id": "1069645096241110_122112183123347624"
   }
 ]
