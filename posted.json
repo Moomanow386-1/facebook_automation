@@ -1,14 +1,5 @@
 [
   {
-    "url": "",
-    "topic": "Descope launches Agentic Identity Hub 2.5 to secure autonomous AI agent access.",
-    "posted_at": "2026-06-09T14:14:55.840790+00:00",
-    "post_id": "1069645096241110_122107458471347624",
-    "metrics_refreshed_at": "2026-06-15T14:52:34.543358+00:00",
-    "views": 2,
-    "clicks": 0
-  },
-  {
     "url": "https://www.youtube.com/watch?v=O4OblK71ZUQ",
     "topic": "UC Berkeley launches ALE: a rigorous new benchmark where top AI agents struggle.",
     "posted_at": "2026-06-09T17:30:26.156953+00:00",
@@ -263,5 +254,11 @@
     "views": 2,
     "clicks": 0,
     "metrics_refreshed_at": "2026-06-15T14:52:34.543358+00:00"
+  },
+  {
+    "url": "https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/?bc=OTH",
+    "topic": "Salesforce acquires AI agent startup Fin for $3.6 billion to boost Agentforce.",
+    "posted_at": "2026-06-15T18:59:54.349375+00:00",
+    "post_id": "1069645096241110_122113355187347624"
   }
 ]
