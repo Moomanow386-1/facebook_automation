@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://thehackernews.com/2026/06/researchers-build-self-replicating-ai.html",
-    "topic": "U of Toronto researchers develop autonomous AI worm using local LLMs for self-spreading cyberattacks.",
-    "posted_at": "2026-06-10T06:56:31.047684+00:00",
-    "post_id": "1069645096241110_122108031063347624",
-    "metrics_refreshed_at": "2026-06-16T18:50:36.556969+00:00",
-    "views": 2,
-    "clicks": 1
-  },
-  {
     "url": "",
     "topic": "**NIST proves mathematically that 100% secure AI guardrails are impossible.**",
     "posted_at": "2026-06-10T07:37:09.537479+00:00",
@@ -261,5 +252,11 @@
     "posted_at": "2026-06-16T09:21:21.107873+00:00",
     "post_id": "1069645096241110_122113693119347624",
     "metrics_refreshed_at": "2026-06-16T18:50:36.556969+00:00"
+  },
+  {
+    "url": "https://openai.com/index/introducing-openai-partner-network/",
+    "topic": "OpenAI launches partner network to train 300,000 enterprise AI consultants by 2026.",
+    "posted_at": "2026-06-16T22:46:47.331299+00:00",
+    "post_id": "1069645096241110_122114042223347624"
   }
 ]
