@@ -13,10 +13,14 @@ GENERATE_MODEL = "gemini-3.5-flash"
 GENERATE_MODEL_FALLBACKS = ["gemini-3.1-flash-lite"]
 UTIL_MODEL = "gemini-3.1-flash-lite"
 _RETRY_DELAYS = [30, 60, 120, 180, 300, 300, 300, 300]
+# Short delays for GENERATE model — fail fast so fallback model is tried sooner
+_GENERATE_RETRY_DELAYS = [15, 30, 60]
 
 
-def _with_retry(fn):
-    for delay in _RETRY_DELAYS:
+def _with_retry(fn, delays=None):
+    if delays is None:
+        delays = _RETRY_DELAYS
+    for delay in delays:
         try:
             return fn()
         except (ServerError, httpx.ReadError, httpx.ConnectError, httpx.RemoteProtocolError) as exc:
@@ -144,7 +148,7 @@ def _generate_post(prompt: str) -> tuple[str, str]:
                 config=types.GenerateContentConfig(
                     tools=[types.Tool(google_search=types.GoogleSearch())]
                 ),
-            ))
+            ), delays=_GENERATE_RETRY_DELAYS)
             if model != GENERATE_MODEL:
                 print(f"[fallback] used {model} after {GENERATE_MODEL} unavailable")
             break
