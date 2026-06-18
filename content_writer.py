@@ -276,6 +276,5 @@ def write_post_with_search(posted_history: list[dict] | None = None) -> tuple[st
         topic_label = _extract_topic_label(post)
         return post, url, topic_label
 
-    print("[dedup] all retries exhausted, using last attempt")
-    topic_label = _extract_topic_label(post)
-    return post, url, topic_label
+    print("[dedup] all retries exhausted — skipping to avoid duplicate post")
+    return None, None, None

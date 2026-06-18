@@ -209,6 +209,10 @@ def post_one(dry_run: bool = False):
         print("[metrics] posted.json updated with engagement data")
     content, url, topic_label = write_post_with_search(posted_history)
 
+    if content is None:
+        print("[skip] dedup exhausted — no post this run")
+        return
+
     real_url = resolve_url(url)
     full_content = f"{content}\n\nอ่านต่อ: {real_url}" if real_url else content
 
