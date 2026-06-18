@@ -217,14 +217,12 @@ def post_one(dry_run: bool = False):
     print("======================")
 
     if not real_url:
-        print("[skip] no URL from grounding after retries — skipping post")
-        return
+        print("[warn] no URL from grounding — posting text-only")
 
     og_image = get_og_image(real_url) if real_url else None
 
     if not og_image:
-        print("[skip] no OG image found — skipping post")
-        return
+        print("[warn] no OG image — posting text-only")
 
     # Build overlay image if OG image exists
     composed_buf = None
