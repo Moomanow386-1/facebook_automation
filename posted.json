@@ -1,14 +1,5 @@
 [
   {
-    "url": "",
-    "topic": "Asana and Palo Alto Networks acquire AI startups to accelerate enterprise Agentic Workflows.",
-    "posted_at": "2026-06-11T04:33:00.526098+00:00",
-    "post_id": "1069645096241110_122108860767347624",
-    "views": 2,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-19T12:38:47.746846+00:00"
-  },
-  {
     "url": "https://finance.technews.tw/2026/06/11/ai-coding-agents-write-180-more-code-but-ship-only-30-more-software/",
     "topic": "MIT study: AI coding agents increase code volume, but adoption into production remains low.",
     "posted_at": "2026-06-11T07:20:31.348496+00:00",
@@ -243,7 +234,7 @@
     "topic": "NVIDIA launches enterprise-grade AI agent architecture for industrial automation and real-time operations.",
     "posted_at": "2026-06-18T23:01:03.421471+00:00",
     "post_id": "1069645096241110_122115063477347624",
-    "metrics_refreshed_at": "2026-06-19T08:22:53.922106+00:00"
+    "metrics_refreshed_at": "2026-06-19T17:07:40.425383+00:00"
   },
   {
     "url": "",
@@ -251,5 +242,11 @@
     "posted_at": "2026-06-19T02:48:11.922856+00:00",
     "post_id": "1069645096241110_122115126741347624",
     "metrics_refreshed_at": "2026-06-19T12:38:47.746846+00:00"
+  },
+  {
+    "url": "",
+    "topic": "Claude Design update: bidirectional sync, WYSIWYG editing, and optimized token usage for developers.",
+    "posted_at": "2026-06-19T17:10:19.340305+00:00",
+    "post_id": "1069645096241110_122115487251347624"
   }
 ]
