@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/",
-    "topic": "Google DeepMind launches DiffusionGemma: a fast, non-autoregressive text diffusion model.",
-    "posted_at": "2026-06-11T13:58:22.794227+00:00",
-    "post_id": "1069645096241110_122109259767347624",
-    "views": 2,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-19T19:21:08.133549+00:00"
-  },
-  {
     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-warns-ai-self-improvement-could-end-in-lost-human-control",
     "topic": "Anthropic: Claude writes over 80% of production code, enabling recursive self-improvement.",
     "posted_at": "2026-06-11T18:02:32.151276+00:00",
@@ -245,5 +236,11 @@
     "topic": "Google DeepMind releases AI Control Roadmap to mitigate agentic insider threats.",
     "posted_at": "2026-06-19T19:26:12.496614+00:00",
     "post_id": "1069645096241110_122115534477347624"
+  },
+  {
+    "url": "https://www.anthropic.com/research/claude-code-expertise",
+    "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
+    "posted_at": "2026-06-19T21:57:21.697929+00:00",
+    "post_id": "1069645096241110_122115575973347624"
   }
 ]
