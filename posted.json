@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/",
-    "topic": "Anthropic reverses controversial policy that silently degraded performance for AI researchers.",
-    "posted_at": "2026-06-12T02:07:58.006528+00:00",
-    "post_id": "1069645096241110_122109748587347624",
-    "views": 2,
-    "clicks": 1,
-    "metrics_refreshed_at": "2026-06-20T11:06:14.669448+00:00"
-  },
-  {
     "url": "",
     "topic": "Google DeepMind and partners launch $10M fund for multi-agent AI safety research.",
     "posted_at": "2026-06-12T07:11:56.676461+00:00",
@@ -217,7 +208,7 @@
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
     "post_id": "1069645096241110_122115575973347624",
-    "metrics_refreshed_at": "2026-06-20T06:51:03.218575+00:00"
+    "metrics_refreshed_at": "2026-06-20T13:19:05.826238+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
@@ -230,12 +221,19 @@
     "url": "",
     "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
     "posted_at": "2026-06-20T06:53:29.834997+00:00",
-    "post_id": "1069645096241110_122115725031347624"
+    "post_id": "1069645096241110_122115725031347624",
+    "metrics_refreshed_at": "2026-06-20T13:19:05.826238+00:00"
   },
   {
     "url": "https://www.reddit.com/r/claude/comments/1uamzq0/nobel_winner_john_jumper_to_leave_google_deepmind/",
     "topic": "Nobel laureate John Jumper leaves Google DeepMind to join Anthropic.",
     "posted_at": "2026-06-20T11:09:13.530453+00:00",
     "post_id": "1069645096241110_122115876051347624"
+  },
+  {
+    "url": "https://builder.aws.com/content/3FIb6OxjeEPbIPmpV1jfBNp9SQY/aws-summit-new-york-2026-the-agentic-ai-era-has-arrived-part-1-of-2",
+    "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
+    "posted_at": "2026-06-20T13:20:48.045966+00:00",
+    "post_id": "1069645096241110_122115919023347624"
   }
 ]
