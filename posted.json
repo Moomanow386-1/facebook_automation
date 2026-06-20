@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.pymnts.com/acquisitions/2026/openai-plans-ona-purchase-transform-coding-agents/",
-    "topic": "OpenAI acquires Ona to enable persistent, long-running autonomous AI coding agents.",
-    "posted_at": "2026-06-11T20:20:27.211521+00:00",
-    "post_id": "1069645096241110_122109524715347624",
-    "views": 2,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-20T01:59:54.859582+00:00"
-  },
-  {
     "url": "",
     "topic": "VS Code 1.124 release – Autopilot agents now run tasks automatically by default.",
     "posted_at": "2026-06-11T22:47:32.877878+00:00",
@@ -234,12 +225,19 @@
     "url": "https://www.anthropic.com/research/claude-code-expertise",
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
-    "post_id": "1069645096241110_122115575973347624"
+    "post_id": "1069645096241110_122115575973347624",
+    "metrics_refreshed_at": "2026-06-20T06:51:03.218575+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
     "topic": "Anthropic’s Claude Opus 4.7 autonomously programs and controls robotic dogs.",
     "posted_at": "2026-06-20T02:01:49.058411+00:00",
     "post_id": "1069645096241110_122115632121347624"
+  },
+  {
+    "url": "",
+    "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
+    "posted_at": "2026-06-20T06:53:29.834997+00:00",
+    "post_id": "1069645096241110_122115725031347624"
   }
 ]
