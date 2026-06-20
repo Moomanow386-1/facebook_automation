@@ -1,14 +1,5 @@
 [
   {
-    "url": "",
-    "topic": "Google DeepMind and partners launch $10M fund for multi-agent AI safety research.",
-    "posted_at": "2026-06-12T07:11:56.676461+00:00",
-    "post_id": "1069645096241110_122109929445347624",
-    "views": 2,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-20T11:06:14.669448+00:00"
-  },
-  {
     "url": "https://www.nasdaq.com/newsroom/verafin-expands-agentic-ai-workforce-next-gen-aml-fraud-automation",
     "topic": "Nasdaq Verafin launches Agentic AI for fully automated financial crime detection and resolution.",
     "posted_at": "2026-06-12T17:31:13.682508+00:00",
@@ -235,5 +226,11 @@
     "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
     "posted_at": "2026-06-20T13:20:48.045966+00:00",
     "post_id": "1069645096241110_122115919023347624"
+  },
+  {
+    "url": "",
+    "topic": "UK partners with Google DeepMind to accelerate planning approvals using AI.",
+    "posted_at": "2026-06-20T16:17:42.083880+00:00",
+    "post_id": "1069645096241110_122115983127347624"
   }
 ]
