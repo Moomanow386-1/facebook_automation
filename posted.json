@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://enterprisedna.co/resources/news/kpmg-microsoft-agent-365-enterprise-governance-2026/",
-    "topic": "KPMG and Microsoft partner to deploy enterprise AI agents with advanced governance and security.",
-    "posted_at": "2026-06-13T01:43:53.629862+00:00",
-    "post_id": "1069645096241110_122110693323347624",
-    "views": 1,
-    "clicks": 1,
-    "metrics_refreshed_at": "2026-06-20T19:04:35.832467+00:00"
-  },
-  {
     "url": "https://www.crowdfundinsider.com/2026/06/284950-mastercard-introduces-agent-pay-for-machines-to-enable-autonomous-ai-transactions/",
     "topic": "Mastercard launches AP4M for autonomous AI-to-AI micro-payments and machine-to-machine transactions.",
     "posted_at": "2026-06-13T02:01:44.904429+00:00",
@@ -190,7 +181,7 @@
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
     "post_id": "1069645096241110_122115575973347624",
-    "metrics_refreshed_at": "2026-06-20T13:19:05.826238+00:00"
+    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
@@ -204,7 +195,7 @@
     "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
     "posted_at": "2026-06-20T06:53:29.834997+00:00",
     "post_id": "1069645096241110_122115725031347624",
-    "metrics_refreshed_at": "2026-06-20T13:19:05.826238+00:00"
+    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
   },
   {
     "url": "https://www.reddit.com/r/claude/comments/1uamzq0/nobel_winner_john_jumper_to_leave_google_deepmind/",
@@ -217,7 +208,8 @@
     "url": "https://builder.aws.com/content/3FIb6OxjeEPbIPmpV1jfBNp9SQY/aws-summit-new-york-2026-the-agentic-ai-era-has-arrived-part-1-of-2",
     "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
     "posted_at": "2026-06-20T13:20:48.045966+00:00",
-    "post_id": "1069645096241110_122115919023347624"
+    "post_id": "1069645096241110_122115919023347624",
+    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
   },
   {
     "url": "",
@@ -230,5 +222,11 @@
     "topic": "SpaceX acquires Cursor for $60 billion to accelerate AI coding with xAI.",
     "posted_at": "2026-06-20T19:05:57.730127+00:00",
     "post_id": "1069645096241110_122116034019347624"
+  },
+  {
+    "url": "",
+    "topic": "Gallup study: Tech workers not using AI face 3x higher layoff risk.",
+    "posted_at": "2026-06-20T22:03:47.194499+00:00",
+    "post_id": "1069645096241110_122116093893347624"
   }
 ]
