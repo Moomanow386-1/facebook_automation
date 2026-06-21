@@ -1,15 +1,5 @@
 [
   {
-    "url": "",
-    "topic": "US restricts Fable 5 and Mythos 5 access to non-US citizens; Claude suspends Fable 5.",
-    "posted_at": "2026-06-13T02:01:42+0000",
-    "post_id": "1069645096241110_122110705191347624",
-    "manual": true,
-    "views": 5,
-    "clicks": 3,
-    "metrics_refreshed_at": "2026-06-21T11:37:02.433527+00:00"
-  },
-  {
     "url": "https://enterprisedna.co/resources/news/openai-chatgpt-superapp-agents-enterprise-pivot-2026/",
     "topic": "OpenAI pivots ChatGPT to AI agent-based Superapp ahead of IPO.",
     "posted_at": "2026-06-13T19:04:35.899879+00:00",
@@ -156,7 +146,7 @@
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
     "post_id": "1069645096241110_122115575973347624",
-    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
+    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
@@ -170,7 +160,7 @@
     "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
     "posted_at": "2026-06-20T06:53:29.834997+00:00",
     "post_id": "1069645096241110_122115725031347624",
-    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
+    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
   },
   {
     "url": "https://www.reddit.com/r/claude/comments/1uamzq0/nobel_winner_john_jumper_to_leave_google_deepmind/",
@@ -184,7 +174,7 @@
     "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
     "posted_at": "2026-06-20T13:20:48.045966+00:00",
     "post_id": "1069645096241110_122115919023347624",
-    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
+    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
   },
   {
     "url": "",
@@ -205,7 +195,7 @@
     "topic": "Gallup study: Tech workers not using AI face 3x higher layoff risk.",
     "posted_at": "2026-06-20T22:03:47.194499+00:00",
     "post_id": "1069645096241110_122116093893347624",
-    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
+    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
   },
   {
     "url": "https://www.forbes.com/sites/karadennison/2026/06/17/companies-are-firing-workers-to-fund-ai-that-isnt-working-yet/",
@@ -218,12 +208,19 @@
     "url": "https://explainx.ai/blog/openai-codex-teach-skill-by-showing-recording-2026",
     "topic": "OpenAI launches Codex 'Record & Replay' for intuitive AI agent workflow automation.",
     "posted_at": "2026-06-21T07:23:44.274964+00:00",
-    "post_id": "1069645096241110_122116225899347624"
+    "post_id": "1069645096241110_122116225899347624",
+    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
   },
   {
     "url": "https://aiweekly.co/node/3147",
     "topic": "OpenAI and Molecule.one unveil GPT-5.4-powered autonomous AI chemist for real-world drug synthesis.",
     "posted_at": "2026-06-21T11:38:53.013288+00:00",
     "post_id": "1069645096241110_122116299153347624"
+  },
+  {
+    "url": "https://www.prnewswire.com/news-releases/alchemy-introduces-agentcard-a-payments-and-identity-platform-for-ai-agents-built-on-visa-intelligent-commerce-302803786.html",
+    "topic": "Alchemy launches AgentCard, enabling AI agents to make payments via Visa Intelligent Commerce.",
+    "posted_at": "2026-06-21T13:29:43.747454+00:00",
+    "post_id": "1069645096241110_122116330461347624"
   }
 ]
