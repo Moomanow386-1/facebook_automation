@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://blog.google/innovation-and-ai/products/notebooklm/better-research-notebooklm/",
-    "topic": "Google NotebookLM upgraded to AI Research Agent with code execution and data processing.",
-    "posted_at": "2026-06-14T02:09:33.580969+00:00",
-    "post_id": "1069645096241110_122111640897347624",
-    "views": 1,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
-  },
-  {
     "url": "https://timesofindia.indiatimes.com/business/india-business/tcs-will-have-as-many-ai-agents-as-employees/articleshow/131622633.cms",
     "topic": "TCS targets 1:1 ratio of AI agents to human employees within three years.",
     "posted_at": "2026-06-14T11:24:06.765305+00:00",
@@ -137,7 +128,7 @@
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
     "post_id": "1069645096241110_122115575973347624",
-    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
@@ -151,7 +142,7 @@
     "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
     "posted_at": "2026-06-20T06:53:29.834997+00:00",
     "post_id": "1069645096241110_122115725031347624",
-    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "https://www.reddit.com/r/claude/comments/1uamzq0/nobel_winner_john_jumper_to_leave_google_deepmind/",
@@ -165,7 +156,7 @@
     "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
     "posted_at": "2026-06-20T13:20:48.045966+00:00",
     "post_id": "1069645096241110_122115919023347624",
-    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "",
@@ -186,7 +177,7 @@
     "topic": "Gallup study: Tech workers not using AI face 3x higher layoff risk.",
     "posted_at": "2026-06-20T22:03:47.194499+00:00",
     "post_id": "1069645096241110_122116093893347624",
-    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "https://www.forbes.com/sites/karadennison/2026/06/17/companies-are-firing-workers-to-fund-ai-that-isnt-working-yet/",
@@ -200,7 +191,7 @@
     "topic": "OpenAI launches Codex 'Record & Replay' for intuitive AI agent workflow automation.",
     "posted_at": "2026-06-21T07:23:44.274964+00:00",
     "post_id": "1069645096241110_122116225899347624",
-    "metrics_refreshed_at": "2026-06-21T13:28:56.571548+00:00"
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "https://aiweekly.co/node/3147",
@@ -213,12 +204,19 @@
     "url": "https://www.prnewswire.com/news-releases/alchemy-introduces-agentcard-a-payments-and-identity-platform-for-ai-agents-built-on-visa-intelligent-commerce-302803786.html",
     "topic": "Alchemy launches AgentCard, enabling AI agents to make payments via Visa Intelligent Commerce.",
     "posted_at": "2026-06-21T13:29:43.747454+00:00",
-    "post_id": "1069645096241110_122116330461347624"
+    "post_id": "1069645096241110_122116330461347624",
+    "metrics_refreshed_at": "2026-06-21T22:06:06.865928+00:00"
   },
   {
     "url": "https://www.inc.com/soren-kaplan/half-of-ai-job-cuts-will-be-reversed-by-2027-gartner-says-heres-the-real-lesson/91361788",
     "topic": "Companies rehiring staff by 2027 as AI fails to replace human judgment.",
     "posted_at": "2026-06-21T16:27:14.403249+00:00",
     "post_id": "1069645096241110_122116379259347624"
+  },
+  {
+    "url": "",
+    "topic": "Bots and AI agents now account for 57.5% of global internet traffic.",
+    "posted_at": "2026-06-21T22:09:32.205101+00:00",
+    "post_id": "1069645096241110_122116453623347624"
   }
 ]
