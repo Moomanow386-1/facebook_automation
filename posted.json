@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://9to5google.com/2026/06/12/google-information-agents/",
-    "topic": "Google launches proactive AI Search agents for continuous web monitoring and updates.",
-    "posted_at": "2026-06-13T11:10:44.172131+00:00",
-    "post_id": "1069645096241110_122111079867347624",
-    "views": 2,
-    "clicks": 1,
-    "metrics_refreshed_at": "2026-06-21T02:11:23.107380+00:00"
-  },
-  {
     "url": "https://www.theguardian.com/technology/2026/jun/13/anthropic-disable-advanced-ai-models-us-government-order",
     "topic": "US government bans Claude Fable 5 and Mythos 5 over national security concerns.",
     "posted_at": "2026-06-13T13:18:42.965932+00:00",
@@ -172,7 +163,7 @@
     "topic": "Anthropic research: Domain expertise maximizes AI agent performance and coding productivity.",
     "posted_at": "2026-06-19T21:57:21.697929+00:00",
     "post_id": "1069645096241110_122115575973347624",
-    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
+    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/project-fetch-phase-two",
@@ -186,7 +177,7 @@
     "topic": "Microsoft launches Copilot Cowork: AI agents for autonomous cross-app task execution.",
     "posted_at": "2026-06-20T06:53:29.834997+00:00",
     "post_id": "1069645096241110_122115725031347624",
-    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
+    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
   },
   {
     "url": "https://www.reddit.com/r/claude/comments/1uamzq0/nobel_winner_john_jumper_to_leave_google_deepmind/",
@@ -200,7 +191,7 @@
     "topic": "AWS launches AI agents for automated security, knowledge management, and mobile coding.",
     "posted_at": "2026-06-20T13:20:48.045966+00:00",
     "post_id": "1069645096241110_122115919023347624",
-    "metrics_refreshed_at": "2026-06-20T21:57:52.900760+00:00"
+    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
   },
   {
     "url": "",
@@ -220,12 +211,19 @@
     "url": "",
     "topic": "Gallup study: Tech workers not using AI face 3x higher layoff risk.",
     "posted_at": "2026-06-20T22:03:47.194499+00:00",
-    "post_id": "1069645096241110_122116093893347624"
+    "post_id": "1069645096241110_122116093893347624",
+    "metrics_refreshed_at": "2026-06-21T07:21:48.608389+00:00"
   },
   {
     "url": "https://www.forbes.com/sites/karadennison/2026/06/17/companies-are-firing-workers-to-fund-ai-that-isnt-working-yet/",
     "topic": "142,000 tech layoffs in 2026 as companies prioritize AI infrastructure spending over human capital.",
     "posted_at": "2026-06-21T02:13:14.759918+00:00",
     "post_id": "1069645096241110_122116149981347624"
+  },
+  {
+    "url": "https://explainx.ai/blog/openai-codex-teach-skill-by-showing-recording-2026",
+    "topic": "OpenAI launches Codex 'Record & Replay' for intuitive AI agent workflow automation.",
+    "posted_at": "2026-06-21T07:23:44.274964+00:00",
+    "post_id": "1069645096241110_122116225899347624"
   }
 ]
