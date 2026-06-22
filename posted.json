@@ -1,21 +1,12 @@
 [
   {
-    "url": "https://timesofindia.indiatimes.com/business/india-business/tcs-will-have-as-many-ai-agents-as-employees/articleshow/131622633.cms",
-    "topic": "TCS targets 1:1 ratio of AI agents to human employees within three years.",
-    "posted_at": "2026-06-14T11:24:06.765305+00:00",
-    "post_id": "1069645096241110_122112067305347624",
-    "views": 1,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
-  },
-  {
     "url": "https://www.digitalapplied.com/blog/anthropic-advanced-ai-framework-2026-business-readout",
     "topic": "Anthropic invests $350M to address AI-driven job displacement and proposes UBI for workers.",
     "posted_at": "2026-06-14T13:23:01.627571+00:00",
     "post_id": "1069645096241110_122112183123347624",
     "views": 1,
     "clicks": 1,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.apple.com/newsroom/2026/06/apple-intelligence-brings-powerful-ai-capabilities-into-everyday-experiences/",
@@ -24,7 +15,7 @@
     "post_id": "1069645096241110_122112528825347624",
     "views": 2,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/?bc=OTH",
@@ -33,7 +24,7 @@
     "post_id": "1069645096241110_122113355187347624",
     "views": 1,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html",
@@ -42,7 +33,7 @@
     "post_id": "1069645096241110_122113453599347624",
     "views": 1,
     "clicks": 0,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-unveils-continuous-identity-for-ai-agents/",
@@ -51,77 +42,77 @@
     "post_id": "1069645096241110_122113533081347624",
     "views": 1,
     "clicks": 1,
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
     "topic": "GitHub Copilot shifts to usage-based billing due to high costs from agentic workflows.",
     "posted_at": "2026-06-16T09:21:21.107873+00:00",
     "post_id": "1069645096241110_122113693119347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://openai.com/index/introducing-openai-partner-network/",
     "topic": "OpenAI launches partner network to train 300,000 enterprise AI consultants by 2026.",
     "posted_at": "2026-06-16T22:46:47.331299+00:00",
     "post_id": "1069645096241110_122114042223347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://siliconangle.com/2026/06/16/agi-moment-databricks-new-releases-zero-support-deployment-ai-agents/",
     "topic": "Databricks unveils LTAP architecture to enable real-time enterprise AI agents.",
     "posted_at": "2026-06-17T02:26:18.579079+00:00",
     "post_id": "1069645096241110_122114102877347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Salesforce acquires Fin for $3.6B to boost Agentforce and enterprise AI automation.",
     "posted_at": "2026-06-18T13:53:15.308255+00:00",
     "post_id": "1069645096241110_122114880507347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Salesforce acquires AI agent startup Fin to bolster its Agentforce enterprise automation platform.",
     "posted_at": "2026-06-18T19:13:11.348518+00:00",
     "post_id": "1069645096241110_122114980503347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Unreal Engine 5.8 released with experimental MCP support for AI agent integration.",
     "posted_at": "2026-06-18T20:14:46.749059+00:00",
     "post_id": "1069645096241110_122115003813347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "NVIDIA launches enterprise-grade AI agent architecture for industrial automation and real-time operations.",
     "posted_at": "2026-06-18T23:01:03.421471+00:00",
     "post_id": "1069645096241110_122115063477347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Adobe launches Firefly Video Model with Generative Extend for Premiere Pro workflows.",
     "posted_at": "2026-06-19T02:48:11.922856+00:00",
     "post_id": "1069645096241110_122115126741347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Claude Design update: bidirectional sync, WYSIWYG editing, and optimized token usage for developers.",
     "posted_at": "2026-06-19T17:10:19.340305+00:00",
     "post_id": "1069645096241110_122115487251347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
     "topic": "Google DeepMind releases AI Control Roadmap to mitigate agentic insider threats.",
     "posted_at": "2026-06-19T19:26:12.496614+00:00",
     "post_id": "1069645096241110_122115534477347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.anthropic.com/research/claude-code-expertise",
@@ -135,7 +126,7 @@
     "topic": "Anthropic’s Claude Opus 4.7 autonomously programs and controls robotic dogs.",
     "posted_at": "2026-06-20T02:01:49.058411+00:00",
     "post_id": "1069645096241110_122115632121347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
@@ -149,7 +140,7 @@
     "topic": "Nobel laureate John Jumper leaves Google DeepMind to join Anthropic.",
     "posted_at": "2026-06-20T11:09:13.530453+00:00",
     "post_id": "1069645096241110_122115876051347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://builder.aws.com/content/3FIb6OxjeEPbIPmpV1jfBNp9SQY/aws-summit-new-york-2026-the-agentic-ai-era-has-arrived-part-1-of-2",
@@ -163,14 +154,14 @@
     "topic": "UK partners with Google DeepMind to accelerate planning approvals using AI.",
     "posted_at": "2026-06-20T16:17:42.083880+00:00",
     "post_id": "1069645096241110_122115983127347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.forbes.com/sites/rashishrivastava/2026/06/16/spacexs-60-billion-cursor-acquisition-double-20-something-cofounders-net-worths/",
     "topic": "SpaceX acquires Cursor for $60 billion to accelerate AI coding with xAI.",
     "posted_at": "2026-06-20T19:05:57.730127+00:00",
     "post_id": "1069645096241110_122116034019347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
@@ -184,7 +175,7 @@
     "topic": "142,000 tech layoffs in 2026 as companies prioritize AI infrastructure spending over human capital.",
     "posted_at": "2026-06-21T02:13:14.759918+00:00",
     "post_id": "1069645096241110_122116149981347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://explainx.ai/blog/openai-codex-teach-skill-by-showing-recording-2026",
@@ -198,7 +189,7 @@
     "topic": "OpenAI and Molecule.one unveil GPT-5.4-powered autonomous AI chemist for real-world drug synthesis.",
     "posted_at": "2026-06-21T11:38:53.013288+00:00",
     "post_id": "1069645096241110_122116299153347624",
-    "metrics_refreshed_at": "2026-06-21T19:08:47.110729+00:00"
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "https://www.prnewswire.com/news-releases/alchemy-introduces-agentcard-a-payments-and-identity-platform-for-ai-agents-built-on-visa-intelligent-commerce-302803786.html",
@@ -211,12 +202,19 @@
     "url": "https://www.inc.com/soren-kaplan/half-of-ai-job-cuts-will-be-reversed-by-2027-gartner-says-heres-the-real-lesson/91361788",
     "topic": "Companies rehiring staff by 2027 as AI fails to replace human judgment.",
     "posted_at": "2026-06-21T16:27:14.403249+00:00",
-    "post_id": "1069645096241110_122116379259347624"
+    "post_id": "1069645096241110_122116379259347624",
+    "metrics_refreshed_at": "2026-06-22T02:14:58.719202+00:00"
   },
   {
     "url": "",
     "topic": "Bots and AI agents now account for 57.5% of global internet traffic.",
     "posted_at": "2026-06-21T22:09:32.205101+00:00",
     "post_id": "1069645096241110_122116453623347624"
+  },
+  {
+    "url": "https://www.forbes.com/sites/anishasircar/2026/06/16/anthropic-disabled-fable-5-and-mythos-5-after-a-us-export-control-order-heres-what-happened/",
+    "topic": "US bans new Anthropic models; global access shutdown causes widespread production outages.",
+    "posted_at": "2026-06-22T02:16:59.517334+00:00",
+    "post_id": "1069645096241110_122116505571347624"
   }
 ]
