@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.apple.com/newsroom/2026/06/apple-intelligence-brings-powerful-ai-capabilities-into-everyday-experiences/",
-    "topic": "WWDC 2026: Apple revamps Siri with Google partnership and multi-model support.",
-    "posted_at": "2026-06-14T22:03:07.588942+00:00",
-    "post_id": "1069645096241110_122112528825347624",
-    "views": 2,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-22T08:45:36.626197+00:00"
-  },
-  {
     "url": "https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/?bc=OTH",
     "topic": "Salesforce acquires AI agent startup Fin for $3.6 billion to boost Agentforce.",
     "posted_at": "2026-06-15T18:59:54.349375+00:00",
@@ -215,5 +206,11 @@
     "topic": "Google and partners launch ARD: an open-source standard for efficient AI agent tool discovery.",
     "posted_at": "2026-06-22T09:07:37.872903+00:00",
     "post_id": "1069645096241110_122116649427347624"
+  },
+  {
+    "url": "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment/",
+    "topic": "Samsung partners with OpenAI to provide ChatGPT Enterprise to global employees.",
+    "posted_at": "2026-06-22T14:22:31.437916+00:00",
+    "post_id": "1069645096241110_122116818441347624"
   }
 ]
