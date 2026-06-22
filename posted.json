@@ -1,14 +1,5 @@
 [
   {
-    "url": "https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html",
-    "topic": "PwC 2026 AI Jobs Report: AI splits labor market into two distinct growth tracks.",
-    "posted_at": "2026-06-15T22:55:39.278287+00:00",
-    "post_id": "1069645096241110_122113453599347624",
-    "views": 1,
-    "clicks": 0,
-    "metrics_refreshed_at": "2026-06-22T18:38:43.378662+00:00"
-  },
-  {
     "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-unveils-continuous-identity-for-ai-agents/",
     "topic": "CrowdStrike launches Continuous Identity to secure AI agents in real-time.",
     "posted_at": "2026-06-16T02:17:04.047862+00:00",
@@ -203,12 +194,19 @@
     "url": "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment/",
     "topic": "Samsung partners with OpenAI to provide ChatGPT Enterprise to global employees.",
     "posted_at": "2026-06-22T14:22:31.437916+00:00",
-    "post_id": "1069645096241110_122116818441347624"
+    "post_id": "1069645096241110_122116818441347624",
+    "metrics_refreshed_at": "2026-06-22T22:28:48.641002+00:00"
   },
   {
     "url": "https://www.digitalapplied.com/blog/advertising-mcp-servers-pinterest-microsoft-2026-guide",
     "topic": "Pinterest and Microsoft Ads adopt MCP for seamless AI-driven advertising data integration.",
     "posted_at": "2026-06-22T18:40:01.647062+00:00",
     "post_id": "1069645096241110_122116895415347624"
+  },
+  {
+    "url": "https://www.techradar.com/pro/security/a-newbie-hacker-used-vague-low-skill-prompts-in-claude-and-codex-to-breach-14-companies-and-the-ai-agents-did-all-the-legwork",
+    "topic": "Amateur hacker exploits 14 firms using AI agents to bypass security controls.",
+    "posted_at": "2026-06-22T22:39:51.724373+00:00",
+    "post_id": "1069645096241110_122116948671347624"
   }
 ]
