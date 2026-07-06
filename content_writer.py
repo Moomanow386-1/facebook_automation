@@ -146,7 +146,8 @@ def _generate_post(prompt: str) -> tuple[str, str]:
                 model=m,
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                    tools=[types.Tool(google_search=types.GoogleSearch())],
+                    thinking_config=types.ThinkingConfig(thinking_budget=0),
                 ),
             ), delays=_GENERATE_RETRY_DELAYS)
             if model != GENERATE_MODEL:
