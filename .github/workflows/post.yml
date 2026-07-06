@@ -1,9 +1,7 @@
 name: Facebook Auto Post
 
 on:
-  schedule:
-    - cron: '0 */3 * * *'  # ทุก 3 ชั่วโมง (~8 โพสต์/วัน)
-  workflow_dispatch:       # รันมือได้จาก GitHub UI
+  workflow_dispatch:       # รันมือได้จาก GitHub UI (auto schedule ปิดไว้ — เกินงบ Gemini)
 
 concurrency:
   group: facebook-post
